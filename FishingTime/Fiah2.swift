@@ -55,7 +55,7 @@ class Fish2 : SKNode {
         
         for var i=1; i<=numImages; i++ {
             let chonTextureName = "chon\(i)"
-            print(chonTextureName)
+            //print(chonTextureName)
             runningFrames.append(chonAnimatedAtlas.textureNamed(chonTextureName))
         }
         
@@ -75,7 +75,7 @@ class Fish2 : SKNode {
         chon.physicsBody?.affectedByGravity = false
         chon.physicsBody?.allowsRotation = false
         chon.physicsBody?.categoryBitMask = Fish2Category // 3
-        chon.physicsBody?.contactTestBitMask = HookCategory // 4
+        chon.physicsBody?.contactTestBitMask = Fish2Category | HookCategory // 4
         chon.physicsBody?.collisionBitMask = 10 // 5
         
          let actualY = chon.size.height * random(min:  -0.2 , max: 2.2)

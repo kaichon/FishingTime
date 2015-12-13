@@ -51,7 +51,7 @@ class Shoes : SKNode {
         
         for var i=1; i<=numImages; i++ {
             let cannedTextureName = "shoe\(i)"
-            print(cannedTextureName)
+            //print(cannedTextureName)
             runningFrames.append(shoeAnimatedAtlas.textureNamed(cannedTextureName))
         }
         
@@ -82,8 +82,8 @@ class Shoes : SKNode {
         shoe.physicsBody?.affectedByGravity = false
         shoe.physicsBody?.allowsRotation = false
         shoe.physicsBody?.categoryBitMask = ShoesCategory
-        shoe.physicsBody?.contactTestBitMask = HookCategory
-        shoe.physicsBody?.collisionBitMask = HookCategory
+        shoe.physicsBody?.contactTestBitMask = ShoesCategory | HookCategory
+        shoe.physicsBody?.collisionBitMask = 10
     }
 
 

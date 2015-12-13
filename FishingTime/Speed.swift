@@ -43,6 +43,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         bg.size.width = 1136/2
         bg.size.height = 640/2
         addChild(bg)
+        print(bg.frame)
         
         // ตำแหน่งการแสดงคะแนน ในหน้าจอ ------------------------------------------------------
         points.position = CGPoint(x: frame.size.width * 0.89, y: frame.size.height * 0.9)
@@ -73,6 +74,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
         hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.93)
         //hook.size = CGSizeMake(18,18)
+        
+        
         addChild(hook)
 
         rope.position = CGPointMake(self.size.width * 0.52 , self.size.height * 1.42)
@@ -84,7 +87,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
         //  All Enemy ----------------------------
         
-        fish1.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
+       // fish1.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
+        fish1.position=CGPoint(x: 295.359985351562 , y: 10)
         addChild(fish1)
         
         fish2.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
@@ -158,13 +162,44 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         //projectile.removeFromParent()
         fish1.removeFromParent()
     }
-    override func update(currentTime: CFTimeInterval) {
-    
    
+    override func update(currentTime: CFTimeInterval) {
+        
+        updateEnemies()
+        
     }
     
-    
-    
-    
-  
+    private func updateEnemies() {
+        
+        var enemiesToRemove:[SKNode] = []
+        for node in self.children {
+            if CGRectContainsPoint(hook.frame, node.position) {
+                // Mark enemy for removal
+                enemiesToRemove.append(node)
+                print("test hit",node.frame, terminator: "")
+                continue
+            }
+        }
+        self.removeChildrenInArray(enemiesToRemove)
+    }
+
+    func didBeginContact(contact: SKPhysicsContact) {
+        let a: SKPhysicsBody = contact.bodyA
+        let b: SKPhysicsBody = contact.bodyB
+        print("a:",a.categoryBitMask,"b:",b.categoryBitMask)
+        
+        if((a.categoryBitMask & Fish1Category) != 0){
+            print("Fish1")
+        }
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish2Category){
+            print("Fish2")
+        }
+        
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask==ShoesCategory){
+            print("Shoes")
+        }
+        
+    }
  }

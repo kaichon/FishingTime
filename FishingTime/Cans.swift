@@ -46,7 +46,7 @@ class Cans : SKNode {
         
         for var i=1; i<=numImages; i++ {
             let cannedTextureName = "canned\(i)"
-            print(cannedTextureName)
+            //print(cannedTextureName)
             runningFrames.append(cannedAnimatedAtlas.textureNamed(cannedTextureName))
         }
         
@@ -75,10 +75,8 @@ class Cans : SKNode {
         canned.physicsBody?.affectedByGravity = false
         canned.physicsBody?.allowsRotation = false
         canned.physicsBody?.categoryBitMask = CansCategory
-        canned.physicsBody?.contactTestBitMask = HookCategory
-        canned.physicsBody?.collisionBitMask = HookCategory
-        
-        
+        canned.physicsBody?.contactTestBitMask = CansCategory | HookCategory
+        canned.physicsBody?.collisionBitMask = 10
     }
 
     

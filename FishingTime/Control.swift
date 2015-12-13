@@ -16,16 +16,16 @@ class Control: SKNode{
         super.init()
         name = "Control\(self)"
         
+        hook.size = CGSize(width: 18,height: 18)
         addhook()
         
-        let body = SKPhysicsBody(rectangleOfSize: hook.self.size)
+        let body = SKPhysicsBody(rectangleOfSize: hook.size)
         body.dynamic = false
         body.affectedByGravity = false
         body.allowsRotation = false
         body.categoryBitMask = HookCategory
-        body.contactTestBitMask = Fish1Category
-        body.collisionBitMask = Fish1Category
-        
+        body.contactTestBitMask =  HookCategory | Fish1Category | Fish2Category | ShoesCategory | CansCategory
+        body.collisionBitMask = 0
     }
 
     required init?(coder aDecoder: NSCoder) {

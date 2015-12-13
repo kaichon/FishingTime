@@ -62,7 +62,7 @@ class Fish1 : SKNode {
         
         for var i=1; i<=numImages; i++ {
             let fishTextureName = "fish\(i)"
-            print(fishTextureName)
+            //print(fishTextureName)
             runningFrames.append(fishAnimatedAtlas.textureNamed(fishTextureName))
         }
         
@@ -84,16 +84,18 @@ class Fish1 : SKNode {
         let movefish = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 6, max: 8))))
         let removefish = (SKAction.removeFromParent())
        
-        fish.runAction(SKAction.sequence([movefish, removefish]))
+        //fish.runAction(SKAction.sequence([movefish, removefish]))
         
         
-        fish.physicsBody = SKPhysicsBody(rectangleOfSize: fish.self.size)
-        fish.physicsBody?.dynamic = true
+        fish.physicsBody = SKPhysicsBody(rectangleOfSize: fish.size)
+        fish.physicsBody?.dynamic = false
         fish.physicsBody?.affectedByGravity = false
         fish.physicsBody?.allowsRotation = false
         fish.physicsBody?.categoryBitMask = Fish1Category
         fish.physicsBody?.contactTestBitMask = HookCategory
-        fish.physicsBody?.collisionBitMask = HookCategory
+        fish.physicsBody?.collisionBitMask = 0
+        
+        fish.physicsBody?.usesPreciseCollisionDetection = true
         
         
       
