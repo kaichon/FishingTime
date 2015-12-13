@@ -30,7 +30,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     let man = Man()
     let hook = Control()
     let rope = Rope()
-    var a:UInt
+    var a:UInt!
     
     func ab(){
     }
