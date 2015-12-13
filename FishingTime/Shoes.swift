@@ -23,7 +23,7 @@ class Shoes : SKNode {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addshoe),
-                SKAction.waitForDuration(8) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
+                SKAction.waitForDuration(11) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
                 ])
             ))
         

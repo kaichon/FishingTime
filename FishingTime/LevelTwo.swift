@@ -27,6 +27,8 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     
     var points = SKLabelNode(text: "0")
     var points2 = SKLabelNode(text: "0")
+    var numPoints1 = 0
+    var numPoints2 = 0
     
     let fullscore = SKLabelNode(text: "/3")
     let fullscore2 = SKLabelNode(text: "/2")

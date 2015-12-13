@@ -23,14 +23,16 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     var seconds = 0
     var timer = NSTimer()
     let bg = SKSpriteNode(imageNamed: "BGSpeed")
-    
-    var points = SKLabelNode(text: "0")
     let btnclose = SKSpriteNode(imageNamed: "close")
     
+    
+    var points = SKLabelNode(text: "0")
+    var numPoints = 0
+    
+
     let man = Man()
     let hook = Control()
     let rope = Rope()
-    
  
     override func didMoveToView(view: SKView)  {
         
@@ -82,8 +84,6 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         addChild(rope)
         
         
-        
-        
         //  All Enemy ----------------------------
         
         fish1.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
@@ -101,11 +101,12 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
         
         
+
     }
     
     
     func setupGame()  {
-        seconds = 20
+        seconds = 70
         timeOut.text = "\(seconds)" //แสดงค่าเริ่มต้น
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         
@@ -159,43 +160,63 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         fish1.removeFromParent()
     }
    
-    override func update(currentTime: CFTimeInterval) {
-        
-        updateEnemies()
-        
-    }
-    
-    private func updateEnemies() {
-        
-        var enemiesToRemove:[SKNode] = []
-        for node in self.children {
-            if CGRectContainsPoint(hook.frame, node.position) {
-                // Mark enemy for removal
-                enemiesToRemove.append(node)
-                print("test hit",node.frame, terminator: "")
-                continue
-            }
-        }
-        self.removeChildrenInArray(enemiesToRemove)
-    }
+//    override func update(currentTime: CFTimeInterval) {
+//        
+//        //updateEnemies()
+//     
+//
+//    }
+//    
+//    private func updateEnemies() {
+//        
+//        var enemiesToRemove:[SKNode] = []
+//        for node in self.children {
+//            if CGRectContainsPoint(hook.frame, node.position) {
+//                // Mark enemy for removal
+//                enemiesToRemove.append(node)
+//                print("test hit",node.frame, terminator: "")
+//                continue
+//            }
+//        }
+//        self.removeChildrenInArray(enemiesToRemove)
+//    }
 
     func didBeginContact(contact: SKPhysicsContact) {
         let a: SKPhysicsBody = contact.bodyA
         let b: SKPhysicsBody = contact.bodyB
         print("a:",a.categoryBitMask,"b:",b.categoryBitMask)
         
-        if((a.categoryBitMask & Fish1Category) != 0){
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish1Category){
             print("Fish1")
+            
+            numPoints += 1
+            points.text = "\(numPoints)"
+            
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish2Category){
             print("Fish2")
+            numPoints += 1
+            points.text = "\(numPoints)"
         }
         
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==ShoesCategory){
             print("Shoes")
+            seconds -= 10
+            
+            
         }
         
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask==CansCategory){
+            print("Can")
+            seconds -= 10
+           
+        }
+
     }
+    
+    
+
+    
  }

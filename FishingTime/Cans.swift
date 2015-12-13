@@ -22,7 +22,7 @@ class Cans : SKNode {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addcans),
-                SKAction.waitForDuration(10)
+                SKAction.waitForDuration(15)
                 ])
             ))
     }

@@ -23,11 +23,12 @@ class LevelOne: SKScene {
     //private var rope2:Rope
     
     var level = SKLabelNode(text: "level 1")
+    
     var points = SKLabelNode(text: "0")
-    let bg = SKSpriteNode(imageNamed: "BGLavel1")
-    
     let fullscore = SKLabelNode(text: "/3")
+    var numPoints = 0
     
+    let bg = SKSpriteNode(imageNamed: "BGLavel1")
     let btnclose = SKSpriteNode(imageNamed: "close")
     
     let man = Man()
