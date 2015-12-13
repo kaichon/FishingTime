@@ -32,7 +32,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     let rope = Rope()
     var a:UInt
     
-    
+    func ab(){
+    }
     override func didMoveToView(view: SKView)  {
         
         setupGame()
