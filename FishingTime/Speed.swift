@@ -36,7 +36,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     override func didMoveToView(view: SKView)  {
         
         setupGame()
-        print( "hi")
+        print( "hello")
         
         
         bg.position = CGPointMake(self.size.width / 2, self.size.height/2)
