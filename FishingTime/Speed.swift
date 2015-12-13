@@ -30,7 +30,6 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     let man = Man()
     let hook = Control()
     let rope = Rope()
-    var a:UInt!
     
  
     override func didMoveToView(view: SKView)  {
@@ -38,12 +37,10 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         setupGame()
-        print( "helloy")
-        
         
         bg.position = CGPointMake(self.size.width / 2, self.size.height/2)
-        bg.size.width = 1136/2
-        bg.size.height = 640/2
+        bg.size.width = frame.size.width
+        bg.size.height = frame.size.height
         addChild(bg)
         print(bg.frame)
         
@@ -59,9 +56,9 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
         //ButtonClose
         btnclose.position = CGPointMake(self.size.width * 0.97, self.size.height * 0.94)
-        btnclose.size = CGSizeMake(34,35)
-        addChild(btnclose)
-        
+        btnclose.size.width = size.width / 20
+        btnclose.size.height = size.height / 12.5
+        addChild(btnclose)        
         
         
         timeOut.fontSize = 20

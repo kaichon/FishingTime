@@ -15,31 +15,29 @@ import UIKit
 class HighScore: SKScene {
     
     let btnclose = SKSpriteNode(imageNamed: "close")
-    
-    
     let btnclose2 = SKSpriteNode(imageNamed: "close2")
+    let bghighScore = SKSpriteNode(imageNamed: "bgHighScore")
     
     override func didMoveToView(view: SKView) {
         
-        let bghighScore = SKSpriteNode(imageNamed: "bgHighScore")
         bghighScore.position = CGPointMake(self.size.width / 2, self.size.height/2)
-        //        bgmanu.size = CGSizeMake(1136/2, 640/2)
-        //iphon 5s
-        bghighScore.size.width = 1136/2
-        bghighScore.size.height = 640/2
+        bghighScore.size.width = frame.size.width
+        bghighScore.size.height = frame.size.height
         addChild(bghighScore)
         
         
         //ButtonClose
         btnclose.position = CGPointMake(self.size.width * 0.88, self.size.height * 0.85)
-        btnclose.size = CGSizeMake(34,35)
+        btnclose.size.width = size.width / 15.5
+        btnclose.size.height = size.height / 9.5
         addChild(btnclose)
         
         //------------------------------------------------------------------------------
         
         //ButtonClose2
         btnclose2.position = CGPointMake(self.size.width * 0.88, self.size.height * 0.85)
-        btnclose2.size = CGSizeMake(34,35)
+        btnclose2.size.width = size.width / 15.5
+        btnclose2.size.height = size.height / 9.5
         
         
     }

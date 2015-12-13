@@ -42,10 +42,11 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     override func didMoveToView(view: SKView)  {
         
         bg.position = CGPointMake(self.size.width / 2, self.size.height/2)
-        bg.size.width = 1136/2
-        bg.size.height = 640/2
+        bg.size.width = frame.size.width
+        bg.size.height = frame.size.height
         addChild(bg)
-            
+        
+        
         // ตำแหน่งการแสดงคะแนน ในหน้าจอ ------------------------------------------------------
         points.position = CGPoint(x: frame.size.width * 0.88, y: frame.size.height * 0.93)
         points.fontColor = UIColor.redColor()
@@ -77,7 +78,8 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         //ButtonClose
         btnclose.position = CGPointMake(self.size.width * 0.97, self.size.height * 0.94)
-        btnclose.size = CGSizeMake(34,35)
+        btnclose.size.width = size.width / 20
+        btnclose.size.height = size.height / 12.5
         addChild(btnclose)
  
         

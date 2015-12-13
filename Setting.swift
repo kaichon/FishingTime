@@ -18,7 +18,6 @@ class Setting: SKScene {
     
     let btnclose = SKSpriteNode(imageNamed: "close")
     let btnclose2 = SKSpriteNode(imageNamed: "close2")
-    
     let on = SKSpriteNode(imageNamed: "on")
     let off = SKSpriteNode(imageNamed: "off")
     let volume = SKSpriteNode(imageNamed: "volume")
@@ -27,45 +26,49 @@ class Setting: SKScene {
     let soundDefault = NSUserDefaults.standardUserDefaults()
     
     let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
+    
+    let bgsetting = SKSpriteNode(imageNamed: "bgsetting")
 
 //    var num = UInt()
     
     
         override func didMoveToView(view: SKView) {
             
-        let bgsetting = SKSpriteNode(imageNamed: "bgsetting")
-        bgsetting.position = CGPointMake(self.size.width / 2, self.size.height/2)
-        //        bgmanu.size = CGSizeMake(1136/2, 640/2)
-        //iphon 5s
-        bgsetting.size.width = 1136/2
-        bgsetting.size.height = 640/2
-        addChild(bgsetting)
+        
+            bgsetting.position = CGPointMake(frame.size.width / 2, frame.size.height/2)
+            bgsetting.size.width = frame.size.width
+            bgsetting.size.height = frame.size.height
+            addChild(bgsetting)
             
             
-        volume.position = CGPointMake(size.width * 0.3, size.height * 0.45)
-        volume.size = CGSizeMake(65, 60)
-        addChild(volume)
+            volume.position = CGPointMake(size.width * 0.3, size.height * 0.45)
+            volume.size.width = size.width / 8
+            volume.size.height = size.height / 5.5
+            addChild(volume)
             
-        dad.position = CGPointMake(size.width * 0.3, size.height * 0.45)
+            dad.position = CGPointMake(size.width * 0.3, size.height * 0.45)
             
-        on.position = CGPointMake(size.width * 0.6, size.height * 0.45)
-        on.size = CGSizeMake(130,40)
+            on.position = CGPointMake(size.width * 0.6, size.height * 0.45)
+            on.size.width = size.width / 5
+            on.size.height = size.height / 7
             
-        off.position = CGPointMake(size.width * 0.6, size.height * 0.45)
-        off.size = CGSizeMake(130,40)
+            off.position = CGPointMake(size.width * 0.6, size.height * 0.45)
+            off.size.width = size.width / 5
+            off.size.height = size.height / 7
+
+            
+            //ButtonClose
+            btnclose.position = CGPointMake(self.size.width * 0.88, self.size.height * 0.85)
+            btnclose.size.width = size.width / 15.5
+            btnclose.size.height = size.height / 9.5
+            addChild(btnclose)
             
             
-       
-        //ButtonClose
-        btnclose.position = CGPointMake(self.size.width * 0.88, self.size.height * 0.85)
-        btnclose.size = CGSizeMake(34,35)
-        addChild(btnclose)
-            
-       
-         
-        //ButtonClose2    
-        btnclose2.position = CGPointMake(self.size.width * 0.88, self.size.height * 0.85)
-        btnclose2.size = CGSizeMake(34,35)
+            //ButtonClose2
+            btnclose2.position = CGPointMake(self.size.width * 0.88, self.size.height * 0.85)
+            btnclose2.size.width = size.width / 15.5
+            btnclose2.size.height = size.height / 9.5
+
             
     /*------------------------------------------------------------------------------*/
             
@@ -109,8 +112,6 @@ class Setting: SKScene {
                     addChild(on)
                     backgroundMusic.autoplayLooped = true
                     addChild(backgroundMusic)
-                    //num--
-                    //print(num)
                     
                     soundStatus = 0
                     Sound()
@@ -120,8 +121,6 @@ class Setting: SKScene {
                     addChild(off)
                     addChild(dad)
                     backgroundMusic.removeFromParent()
-                    //num++
-                    //print(num)
                     
                     soundStatus = 1
                     Sound()
@@ -159,7 +158,6 @@ class Setting: SKScene {
     }
 
     func Sound(){
-//        let soundDefault = NSUserDefaults.standardUserDefaults()
         soundDefault.setValue(soundStatus, forKey: "soundStatus")
         soundDefault.synchronize()
         print("soundAA\(soundStatus)")

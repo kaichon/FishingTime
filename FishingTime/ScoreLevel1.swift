@@ -22,16 +22,18 @@ class ScoreLevel1: SKScene , SKPhysicsContactDelegate{
     override func didMoveToView(view: SKView)  {
         
         bgscore.position = CGPointMake(self.size.width / 2, self.size.height/2)
-        bgscore.size.width = 1136/2
-        bgscore.size.height = 640/2
+        bgscore.size.width = frame.size.width
+        bgscore.size.height = frame.size.height
         addChild(bgscore)
         // Button-
         ok.position = CGPointMake(self.size.width * 0.5, self.size.height * 0.25)
-        ok.size = CGSizeMake(160,50)
+        ok.size.width = size.width / 4
+        ok.size.height = size.height / 7.5
         addChild(ok)
         
         ok2.position = CGPointMake(self.size.width * 0.5 , self.size.height * 0.25)
-        ok2.size = CGSizeMake(160,50)
+        ok2.size.width = size.width / 4
+        ok2.size.height = size.height / 7.5
         
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
