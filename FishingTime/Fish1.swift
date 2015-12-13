@@ -84,11 +84,11 @@ class Fish1 : SKNode {
         let movefish = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 6, max: 8))))
         let removefish = (SKAction.removeFromParent())
        
-        //fish.runAction(SKAction.sequence([movefish, removefish]))
+        fish.runAction(SKAction.sequence([movefish, removefish]))
         
         
         fish.physicsBody = SKPhysicsBody(rectangleOfSize: fish.size)
-        fish.physicsBody?.dynamic = false
+        fish.physicsBody?.dynamic = true
         fish.physicsBody?.affectedByGravity = false
         fish.physicsBody?.allowsRotation = false
         fish.physicsBody?.categoryBitMask = Fish1Category

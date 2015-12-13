@@ -35,6 +35,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
  
     override func didMoveToView(view: SKView)  {
         
+        physicsWorld.gravity = CGVectorMake(0, 0)
+        physicsWorld.contactDelegate = self
         setupGame()
         print( "helloy")
         
@@ -87,8 +89,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
         //  All Enemy ----------------------------
         
-       // fish1.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
-        fish1.position=CGPoint(x: 295.359985351562 , y: 10)
+        fish1.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
         addChild(fish1)
         
         fish2.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
@@ -101,8 +102,6 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         cans.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
         addChild(cans)
         
-        physicsWorld.gravity = CGVectorMake(0, 0)
-        physicsWorld.contactDelegate = self
         
         
     }
