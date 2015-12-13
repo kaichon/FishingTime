@@ -36,6 +36,9 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     }
     func ac(){
     }
+    
+    func df(){
+    }
     override func didMoveToView(view: SKView)  {
         
         setupGame()
