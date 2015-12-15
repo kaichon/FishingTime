@@ -56,8 +56,6 @@
 		FDE420F61C1C8D42009C81B2 /* ScoreLevel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420F31C1C8D42009C81B2 /* ScoreLevel2.swift */; };
 		FDE420F71C1C8D42009C81B2 /* ScoreSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420F41C1C8D42009C81B2 /* ScoreSpeed.swift */; };
 		FDE420F91C1CA78B009C81B2 /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420F81C1CA78B009C81B2 /* Control.swift */; };
-		FDE420FB1C1CABAC009C81B2 /* Rope.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420FA1C1CABAC009C81B2 /* Rope.swift */; };
-		FDE420FD1C1CAD69009C81B2 /* Man.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420FC1C1CAD69009C81B2 /* Man.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,8 +122,6 @@
 		FDE420F31C1C8D42009C81B2 /* ScoreLevel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreLevel2.swift; sourceTree = "<group>"; };
 		FDE420F41C1C8D42009C81B2 /* ScoreSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSpeed.swift; sourceTree = "<group>"; };
 		FDE420F81C1CA78B009C81B2 /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
-		FDE420FA1C1CABAC009C81B2 /* Rope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rope.swift; sourceTree = "<group>"; };
-		FDE420FC1C1CAD69009C81B2 /* Man.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Man.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +169,6 @@
 				FD5CA67B1B0A66A800EEC868 /* button */,
 				FD5CA6531B0A3A5D00EEC868 /* AppDelegate.swift */,
 				FDE420F81C1CA78B009C81B2 /* Control.swift */,
-				FDE420FA1C1CABAC009C81B2 /* Rope.swift */,
-				FDE420FC1C1CAD69009C81B2 /* Man.swift */,
 				DEC1E9FC1BF27453002D6594 /* Fish1.swift */,
 				DEC1E9FE1BF27EF1002D6594 /* Fiah2.swift */,
 				DEC1EA001BF287E8002D6594 /* Shoes.swift */,
@@ -399,7 +393,6 @@
 				FD5CA6581B0A3A5D00EEC868 /* GameScene.swift in Sources */,
 				FDE420F61C1C8D42009C81B2 /* ScoreLevel2.swift in Sources */,
 				DE9330C21B0FC7C9008A0A6C /* Enemy.swift in Sources */,
-				FDE420FD1C1CAD69009C81B2 /* Man.swift in Sources */,
 				DED7DFBD1B0CCFFD00430C20 /* Speed.swift in Sources */,
 				DED7DFB91B0CCFD000430C20 /* LevelOne.swift in Sources */,
 				DEC1EA011BF287E8002D6594 /* Shoes.swift in Sources */,
@@ -412,7 +405,6 @@
 				FD5CA6A51B0A6D9900EEC868 /* Play.swift in Sources */,
 				FDE420F71C1C8D42009C81B2 /* ScoreSpeed.swift in Sources */,
 				DEC1EA051BF29042002D6594 /* Cans.swift in Sources */,
-				FDE420FB1C1CABAC009C81B2 /* Rope.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,8 @@ import AVFoundation
 
 
 @available(iOS 9.0, *)
+
+
 class GameScene: SKScene,SKPhysicsContactDelegate {
     
     var status = Setting()

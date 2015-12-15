@@ -31,9 +31,9 @@ class LevelOne: SKScene {
     let bg = SKSpriteNode(imageNamed: "BGLavel1")
     let btnclose = SKSpriteNode(imageNamed: "close")
     
-    let man = Man()
+    let man = SKSpriteNode(imageNamed: "man")
     let hook = Control()
-    let rope = Rope()
+    let rope = SKSpriteNode(imageNamed: "rope")
 
     /*
     override init() {
@@ -102,15 +102,17 @@ class LevelOne: SKScene {
         cans.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
         addChild(cans)
         
-        man.position = CGPointMake(self.size.width * 0.26 , self.size.height * 0.7)
+        // --------- คนตกปลา เบ็ด------------------
+        man.position = CGPointMake(self.size.width * 0.26 , self.size.height * 0.69)
+        man.size.width = size.width/1.9
+        man.size.height = size.height/1.6
         addChild(man)
         
-        
-        hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.93)
-        addChild(hook)
-        
-        rope.position = CGPointMake(self.size.width * 0.52 , self.size.height * 1.42)
+        rope.position = CGPointMake(self.size.width * 0.52 , self.size.height * 1.45)
         addChild(rope)
+        
+        hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.9)
+        addChild(hook)
 
         
     }
@@ -138,21 +140,26 @@ class LevelOne: SKScene {
         }
     }
     
+    func controlHook(){
+        let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 3.0))
+        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
+        
+        let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.58, duration: 3.0))
+        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.45, duration: 4.0))
+        
+        hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
+        rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
+        
+    }
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch: AnyObject in touches {
             
             let location = touch.locationInNode(self)
             
-            let movwDown = (SKAction.moveToY(10, duration: 3.0))
-            let moveUp = (SKAction.moveToY(296, duration: 4.0))
+            controlHook()
             
-            let ropeDown = (SKAction.moveToY(170, duration: 3.0))
-            let ropeUp = (SKAction.moveToY(455, duration: 4.0))
-            
-            hook.runAction(SKAction.sequence([movwDown, moveUp]))
-            rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
-            
-           if btnclose.containsPoint(location){
+            if btnclose.containsPoint(location){
                 let playScene = Play(size: self.size)
                 let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(playScene, transition: transition)

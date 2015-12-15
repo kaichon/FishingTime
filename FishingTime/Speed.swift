@@ -30,10 +30,10 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     var numPoints = 0
     
 
-    let man = Man()
+    let man = SKSpriteNode(imageNamed: "man")
+    let rope = SKSpriteNode(imageNamed: "rope")
     let hook = Control()
-    let rope = Rope()
- 
+    
     override func didMoveToView(view: SKView)  {
         
         physicsWorld.gravity = CGVectorMake(0, 0)
@@ -70,19 +70,18 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         addChild(timeOut)
         
                 // --------- คนตกปลา เบ็ด------------------
-        man.position = CGPointMake(self.size.width * 0.26 , self.size.height * 0.7)
+        man.position = CGPointMake(self.size.width * 0.26 , self.size.height * 0.69)
+        man.size.width = size.width / 1.9
+        man.size.height = size.height / 1.6
         addChild(man)
         
-        hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.93)
-        //hook.size = CGSizeMake(18,18)
-        
-        
-        addChild(hook)
-
         rope.position = CGPointMake(self.size.width * 0.52 , self.size.height * 1.42)
-//        rope.size = CGSizeMake(2,301)
+        rope.size.width = size.width / 200
+        rope.size.height = size.height
         addChild(rope)
         
+        hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.9)
+        addChild(hook)
         
         //  All Enemy ----------------------------
         
@@ -127,15 +126,16 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     }
     
     func controlHook(){
-        let movwDown = (SKAction.moveToY(10, duration: 3.0))
-        let moveUp = (SKAction.moveToY(296, duration: 4.0))
+        let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 3.0))
+        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
         
-        let ropeDown = (SKAction.moveToY(170, duration: 3.0))
-        let ropeUp = (SKAction.moveToY(455, duration: 4.0))
+        let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.54, duration: 3.0))
+        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 4.0))
         
-        hook.runAction(SKAction.sequence([movwDown, moveUp]))
+        hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
         rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
     }
+   
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
@@ -143,7 +143,6 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         for touch: AnyObject in touches {
             
             let location = touch.locationInNode(self)
-            
             controlHook()
             
             if btnclose.containsPoint(location){
