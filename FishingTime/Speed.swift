@@ -34,6 +34,9 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     let rope = SKSpriteNode(imageNamed: "rope")
     let hook = Control()
     
+    
+    var reduce = SKLabelNode(text: " - 10 seconds !! ")
+    
     override func didMoveToView(view: SKView)  {
         
         physicsWorld.gravity = CGVectorMake(0, 0)
@@ -83,6 +86,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.9)
         addChild(hook)
         
+       
         //  All Enemy ----------------------------
         
         fish1.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
@@ -159,13 +163,12 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         fish1.removeFromParent()
     }
    
-//    override func update(currentTime: CFTimeInterval) {
-//        
-//        //updateEnemies()
-//     
+    override func update(currentTime: CFTimeInterval) {
+        
+      
+
+    }
 //
-//    }
-//    
 //    private func updateEnemies() {
 //        
 //        var enemiesToRemove:[SKNode] = []
@@ -180,6 +183,16 @@ class Speed: SKScene , SKPhysicsContactDelegate{
 //        self.removeChildrenInArray(enemiesToRemove)
 //    }
 
+    func reduceTime() {
+        reduce.fontSize = 25
+        reduce.fontColor = UIColor.redColor()
+        reduce.position = CGPoint(x: self.size.width * 0.6, y: self.size.height * 0.4)
+        var a = (SKAction.moveToX(self.size.width * 0.7, duration: 3.0))
+        var b = SKAction.removeFromParent()
+        reduce.runAction(SKAction.sequence([a, b]))
+        addChild(reduce)
+    }
+    
     func didBeginContact(contact: SKPhysicsContact) {
         let a: SKPhysicsBody = contact.bodyA
         let b: SKPhysicsBody = contact.bodyB
@@ -187,10 +200,12 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish1Category){
             print("Fish1")
-            
+
             numPoints += 1
             points.text = "\(numPoints)"
+            fish1.removeFromParent()
             
+
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish2Category){
@@ -203,14 +218,14 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==ShoesCategory){
             print("Shoes")
             seconds -= 10
-            
+            reduceTime()
             
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==CansCategory){
             print("Can")
             seconds -= 10
-           
+            reduceTime()
         }
 
     }

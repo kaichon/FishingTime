@@ -62,7 +62,7 @@ class Fish1 : SKNode {
         
         for var i=1; i<=numImages; i++ {
             let fishTextureName = "fish\(i)"
-            //print(fishTextureName)
+            print(fishTextureName)
             runningFrames.append(fishAnimatedAtlas.textureNamed(fishTextureName))
         }
         

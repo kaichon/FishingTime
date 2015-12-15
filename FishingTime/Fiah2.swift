@@ -76,7 +76,7 @@ class Fish2 : SKNode {
         chon.physicsBody?.allowsRotation = false
         chon.physicsBody?.categoryBitMask = Fish2Category // 3
         chon.physicsBody?.contactTestBitMask = Fish2Category | HookCategory // 4
-        chon.physicsBody?.collisionBitMask = 10 // 5
+        chon.physicsBody?.collisionBitMask = 10 
         
          let actualY = chon.size.height * random(min:  -0.2 , max: 2.2)
         
