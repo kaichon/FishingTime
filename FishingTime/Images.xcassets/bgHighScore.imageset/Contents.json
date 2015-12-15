@@ -2,8 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "bgHighScore.jpg"
+      "filename" : "bgHighScore.jpg",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",

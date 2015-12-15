@@ -21,7 +21,7 @@ class Setting: SKScene {
     let on = SKSpriteNode(imageNamed: "on")
     let off = SKSpriteNode(imageNamed: "off")
     let volume = SKSpriteNode(imageNamed: "volume")
-    let dad = SKSpriteNode(color: UIColor.redColor(), size: CGSize(width: 80, height: 8))
+    let novolume = SKSpriteNode(imageNamed: "volumeNo")
     
     let soundDefault = NSUserDefaults.standardUserDefaults()
     
@@ -46,7 +46,10 @@ class Setting: SKScene {
             volume.size.height = size.height / 5.5
             addChild(volume)
             
-            dad.position = CGPointMake(size.width * 0.3, size.height * 0.45)
+            novolume.position = CGPointMake(size.width * 0.3, size.height * 0.45)
+            novolume.size.width = size.width / 8
+            novolume.size.height = size.height / 5.5
+            
             
             on.position = CGPointMake(size.width * 0.6, size.height * 0.45)
             on.size.width = size.width / 5
@@ -74,6 +77,7 @@ class Setting: SKScene {
             
             
 //            let soundDefault = NSUserDefaults.standardUserDefaults()
+            //การอ่านค่า
             if (soundDefault.valueForKey("soundStatus") != nil){
                 soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
                 print("soundMain\(soundStatus)")
@@ -83,7 +87,8 @@ class Setting: SKScene {
            
             if soundStatus == 1 {
                 addChild(off)
-                addChild(dad)
+                addChild(novolume)
+                volume.removeFromParent()
             }
             else{
                 addChild(on)
@@ -108,8 +113,9 @@ class Setting: SKScene {
             }else if off.containsPoint(location){
                 if soundStatus  == 1{
                     off.removeFromParent()
-                    dad.removeFromParent()
+                    novolume.removeFromParent()
                     addChild(on)
+                    addChild(volume)
                     backgroundMusic.autoplayLooped = true
                     addChild(backgroundMusic)
                     
@@ -118,8 +124,9 @@ class Setting: SKScene {
                     print("soundSet\(soundStatus)")
                 }else{
                     on.removeFromParent()
+                    volume.removeFromParent()
                     addChild(off)
-                    addChild(dad)
+                    addChild(novolume)
                     backgroundMusic.removeFromParent()
                     
                     soundStatus = 1
@@ -157,7 +164,7 @@ class Setting: SKScene {
         
     }
 
-    func Sound(){
+    func Sound(){  //การ save ค่า (การจดจำค่า)
         soundDefault.setValue(soundStatus, forKey: "soundStatus")
         soundDefault.synchronize()
         print("soundAA\(soundStatus)")
