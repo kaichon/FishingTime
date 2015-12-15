@@ -123,7 +123,9 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         man.size.height = size.height/1.6
         addChild(man)
         
-        rope.position = CGPointMake(self.size.width * 0.52 , self.size.height * 1.45)
+        rope.position = CGPointMake(self.size.width * 0.52 , self.size.height * 1.42)
+        rope.size.width = size.width / 200
+        rope.size.height = size.height
         addChild(rope)
         
         hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.9)
@@ -158,8 +160,8 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 3.0))
         let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
         
-        let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.58, duration: 3.0))
-        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.45, duration: 4.0))
+        let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.54, duration: 3.0))
+        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 4.0))
         
         hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
         rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
