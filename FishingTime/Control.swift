@@ -24,10 +24,10 @@ class Control: SKNode{
         body.affectedByGravity = false
         body.allowsRotation = false
         body.categoryBitMask = HookCategory
-        body.contactTestBitMask =   Fish1Category | Fish2Category | ShoesCategory | CansCategory
+        body.contactTestBitMask = Fish1Category | Fish2Category | ShoesCategory | CansCategory
         body.collisionBitMask = 0
-        
         body.usesPreciseCollisionDetection = true
+    
         physicsBody = body
     }
 

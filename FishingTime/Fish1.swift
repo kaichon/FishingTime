@@ -6,7 +6,10 @@
 //  Copyright (c) พ.ศ. 2558 Wichitra Wae-useng. All rights reserved.
 //
 
+
+import Foundation
 import SpriteKit
+import GameplayKit
 
 class Fish1 : SKNode {
     
@@ -28,13 +31,6 @@ class Fish1 : SKNode {
                 ])
             ))
         
-//        let body = SKPhysicsBody(rectangleOfSize: fish.self.size)
-//        body.dynamic = false
-//        body.affectedByGravity = false
-//        body.allowsRotation = false
-//        body.categoryBitMask = Fish1Category
-//        body.contactTestBitMask = HookCategory
-//        body.collisionBitMask = HookCategory
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -95,7 +91,7 @@ class Fish1 : SKNode {
         fish.physicsBody?.contactTestBitMask = HookCategory
         fish.physicsBody?.collisionBitMask = 0
         
-        fish.physicsBody?.usesPreciseCollisionDetection = true
+        
         
         
       

@@ -131,7 +131,7 @@ class Play: SKScene {
             let location = touch.locationInNode(self)
             if btnclose.containsPoint(location){
                 let playScene = GameScene(size: self.size)
-                let transition = SKTransition.fadeWithDuration(1)
+                let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(playScene, transition: transition)
                 
             }else if btnspeed.containsPoint(location){

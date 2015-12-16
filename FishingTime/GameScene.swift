@@ -77,7 +77,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         //ButtonHighScore
         btnHighScore2.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.25)
-        btnHighScore2.size = CGSizeMake(140,55)
+        //btnHighScore2.size = CGSizeMake(140,55)
         btnHighScore2.size.width = size.width / 4
         btnHighScore2.size.height = size.height / 5
 

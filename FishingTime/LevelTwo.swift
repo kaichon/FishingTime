@@ -6,9 +6,9 @@
 //  Copyright (c) พ.ศ. 2558 Wichitra Wae-useng. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
-import UIKit
+import AVFoundation
+import GameplayKit
 @available(iOS 9.0, *)
 class LevelTwo: SKScene , SKPhysicsContactDelegate{
     
@@ -25,7 +25,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     let bg = SKSpriteNode(imageNamed: "BGLavel2")
     var level = SKLabelNode(text: "level 2")
     
-    var points = SKLabelNode(text: "0")
+    var points1 = SKLabelNode(text: "0")
     var points2 = SKLabelNode(text: "0")
     var numPoints1 = 0
     var numPoints2 = 0
@@ -50,11 +50,11 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         
         // ตำแหน่งการแสดงคะแนน ในหน้าจอ ------------------------------------------------------
-        points.position = CGPoint(x: frame.size.width * 0.88, y: frame.size.height * 0.93)
-        points.fontColor = UIColor.redColor()
-        points.fontSize = 20
-        points.fontName = "Courier"
-        addChild(points)
+        points1.position = CGPoint(x: frame.size.width * 0.88, y: frame.size.height * 0.93)
+        points1.fontColor = UIColor.redColor()
+        points1.fontSize = 20
+        points1.fontName = "Courier"
+        addChild(points1)
         
         fullscore.position = CGPoint(x: frame.size.width * 0.91, y: frame.size.height * 0.93)
         fullscore.fontColor = UIColor.redColor()
@@ -131,10 +131,13 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.9)
         addChild(hook)
         
+        physicsWorld.gravity = CGVectorMake(0, 0)
+        physicsWorld.contactDelegate = self
+
     }
     
     func setupGame()  {
-        seconds = 20
+        seconds = 120
         timeOut.text = "\(seconds)" //แสดงค่าเริ่มต้น
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         
@@ -151,17 +154,17 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             let transition = SKTransition.fadeWithDuration(0)
             self.scene!.view?.presentScene(Scene, transition: transition)
 
-        }else if(seconds <= 15)  {
+        }else if(seconds <= 115)  {
             level.removeFromParent()
         }
 
     }
     func controlHook(){
         let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 3.0))
-        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
+        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 2.0))
         
         let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.54, duration: 3.0))
-        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 4.0))
+        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 2.0))
         
         hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
         rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
@@ -181,7 +184,50 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             }
         }
     }
-    
+    func didBeginContact(contact: SKPhysicsContact) {
+        let a: SKPhysicsBody //= contact.bodyA
+        let b: SKPhysicsBody //= contact.bodyB
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask{
+            a = contact.bodyA
+            b = contact.bodyB
+        }else{
+            a = contact.bodyB
+            b = contact.bodyA
+        }
+        
+        print("a:",a.categoryBitMask,"b:",b.categoryBitMask)
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask == Fish1Category){
+            print("Fish1")
+            numPoints1 += 1
+            points1.text = "\(numPoints1)"
+            fish1.removeAllChildren()
+            
+            
+        }
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask == Fish2Category){
+            print("Fish2")
+            numPoints2 += 1
+            points2.text = "\(numPoints2)"
+            fish2.removeAllChildren()
+        }
+        
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask == ShoesCategory){
+            print("Shoes")
+            seconds -= 10
+            shoes.removeAllChildren()
+        }
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask == CansCategory){
+            print("Can")
+            seconds -= 10
+            cans.removeAllChildren()
+        }
+        
+    }
+
     
     
 }

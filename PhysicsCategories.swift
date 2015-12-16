@@ -8,9 +8,9 @@
 
 import Foundation
 
-let HookCategory: UInt32 = 1 << 1
-let Fish1Category: UInt32 = 1 << 2
-let Fish2Category: UInt32 = 1 << 3
-let ShoesCategory: UInt32 = 1 << 4
-let CansCategory: UInt32 = 1 << 5
-//let PlayerMissileCategory: UInt32 = 1 << 3
+    let HookCategory: UInt32 = 1 << 1      //2
+    let Fish1Category: UInt32 = 1 << 2     //4
+    let Fish2Category: UInt32 = 1 << 3      //8
+    let ShoesCategory: UInt32 = 1 << 4      //16
+    let CansCategory: UInt32 = 1 << 5       //32
+

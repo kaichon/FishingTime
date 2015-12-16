@@ -22,7 +22,7 @@ class Cans : SKNode {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addcans),
-                SKAction.waitForDuration(15)
+                SKAction.waitForDuration(13)
                 ])
             ))
     }
@@ -62,7 +62,7 @@ class Cans : SKNode {
         
         
         //position
-        canned.position = CGPoint(x: frame.size.width + canned.size.width/2, y: canned.size.height * random(min: -0.2, max: 2))
+        canned.position = CGPoint(x: 100, y: canned.size.height * random(min: -0.2, max: 2))
         addChild(canned)
         
         let movecanned = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 7, max: 9))))
@@ -75,7 +75,7 @@ class Cans : SKNode {
         canned.physicsBody?.affectedByGravity = false
         canned.physicsBody?.allowsRotation = false
         canned.physicsBody?.categoryBitMask = CansCategory
-        canned.physicsBody?.contactTestBitMask = CansCategory | HookCategory
+        canned.physicsBody?.contactTestBitMask = CansCategory 
         canned.physicsBody?.collisionBitMask = 10
     }
 

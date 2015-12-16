@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DE575E1C1BE374D70035CE47 /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE575E1B1BE374D70035CE47 /* PhysicsCategories.swift */; };
-		DE9330C21B0FC7C9008A0A6C /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9330C11B0FC7C9008A0A6C /* Enemy.swift */; };
 		DEB00B421B0B2E9600E0169A /* Close.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB00B2E1B0B2E9600E0169A /* Close.png */; };
 		DEB00B431B0B2E9600E0169A /* Close2.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB00B2F1B0B2E9600E0169A /* Close2.png */; };
 		DEB00B441B0B2E9600E0169A /* HighScore.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB00B301B0B2E9600E0169A /* HighScore.png */; };
@@ -70,7 +69,6 @@
 
 /* Begin PBXFileReference section */
 		DE575E1B1BE374D70035CE47 /* PhysicsCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategories.swift; sourceTree = "<group>"; };
-		DE9330C11B0FC7C9008A0A6C /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		DEB00B2E1B0B2E9600E0169A /* Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close.png; sourceTree = "<group>"; };
 		DEB00B2F1B0B2E9600E0169A /* Close2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close2.png; sourceTree = "<group>"; };
 		DEB00B301B0B2E9600E0169A /* HighScore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighScore.png; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 				DEC1E9FE1BF27EF1002D6594 /* Fiah2.swift */,
 				DEC1EA001BF287E8002D6594 /* Shoes.swift */,
 				DEC1EA041BF29042002D6594 /* Cans.swift */,
-				DE9330C11B0FC7C9008A0A6C /* Enemy.swift */,
 				FD5CA6571B0A3A5D00EEC868 /* GameScene.swift */,
 				FD5CA6A41B0A6D9900EEC868 /* Play.swift */,
 				FD5CA6A81B0A6E7300EEC868 /* Setting.swift */,
@@ -197,10 +194,10 @@
 		FD5CA6511B0A3A5D00EEC868 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FD5CA6C21B0A94D400EEC868 /* fish.atlas */,
 				DED7DFBE1B0CF77D00430C20 /* shoe.atlas */,
 				DEB00B5A1B0BA5B200E0169A /* canneds.atlas */,
 				FD5CA6C01B0A94C900EEC868 /* chon.atlas */,
-				FD5CA6C21B0A94D400EEC868 /* fish.atlas */,
 				FD5CA6521B0A3A5D00EEC868 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -392,7 +389,6 @@
 				DEC1E9FF1BF27EF1002D6594 /* Fiah2.swift in Sources */,
 				FD5CA6581B0A3A5D00EEC868 /* GameScene.swift in Sources */,
 				FDE420F61C1C8D42009C81B2 /* ScoreLevel2.swift in Sources */,
-				DE9330C21B0FC7C9008A0A6C /* Enemy.swift in Sources */,
 				DED7DFBD1B0CCFFD00430C20 /* Speed.swift in Sources */,
 				DED7DFB91B0CCFD000430C20 /* LevelOne.swift in Sources */,
 				DEC1EA011BF287E8002D6594 /* Shoes.swift in Sources */,

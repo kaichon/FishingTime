@@ -6,16 +6,18 @@
 //  Copyright (c) พ.ศ. 2558 Wichitra Wae-useng. All rights reserved.
 //
 
-import Foundation
 import SpriteKit
-import UIKit
+import AVFoundation
+import GameplayKit
+
 @available(iOS 9.0, *)
-class LevelOne: SKScene {
+class LevelOne: SKScene , SKPhysicsContactDelegate{
     
     private var fish1 = Fish1()
     private var fish2 = Fish2()
     private var shoes = Shoes()
     private var cans = Cans()
+    let hook = Control()
     
     var timeOut = SKLabelNode(text: "0")
     var seconds = 0
@@ -32,7 +34,7 @@ class LevelOne: SKScene {
     let btnclose = SKSpriteNode(imageNamed: "close")
     
     let man = SKSpriteNode(imageNamed: "man")
-    let hook = Control()
+    
     let rope = SKSpriteNode(imageNamed: "rope")
 
     /*
@@ -45,6 +47,10 @@ class LevelOne: SKScene {
         fatalError("init(coder:) has not been implemented")
     }*/
     override func didMoveToView(view: SKView)  {
+        
+        physicsWorld.gravity = CGVectorMake(0, 0)
+        physicsWorld.contactDelegate = self
+        
         
         bg.position = CGPointMake(self.size.width / 2, self.size.height/2)
         bg.size.width = frame.size.width
@@ -117,6 +123,7 @@ class LevelOne: SKScene {
         addChild(hook)
 
         
+        
     }
     
     func setupGame()  {
@@ -137,17 +144,17 @@ class LevelOne: SKScene {
             let transition = SKTransition.fadeWithDuration(0)
             self.scene!.view?.presentScene(Scene, transition: transition)
             
-        }else if(seconds <= 15)  {
+        }else if(seconds <= 115)  {
             level.removeFromParent()
         }
     }
     
     func controlHook(){
         let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 3.0))
-        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
+        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 2.0))
         
         let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.54, duration: 3.0))
-        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 4.0))
+        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 2.0))
         
         hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
         rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
@@ -169,6 +176,53 @@ class LevelOne: SKScene {
             
         }
     }
+    override func update(currentTime: CFTimeInterval) {
         
+        
+    }
+    func didBeginContact(contact: SKPhysicsContact) {
+        let a: SKPhysicsBody //= contact.bodyA
+        let b: SKPhysicsBody //= contact.bodyB
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask{
+            a = contact.bodyA
+            b = contact.bodyB
+        }else{
+            a = contact.bodyB
+            b = contact.bodyA
+        }
+        
+        print("a:",a.categoryBitMask,"b:",b.categoryBitMask)
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask == Fish1Category){
+            print("Fish1")
+            numPoints += 1
+            points.text = "\(numPoints)"
+            fish1.removeAllChildren()
+            
+            
+        }
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish2Category){
+            print("Fish2")
+            numPoints += 1
+            points.text = "\(numPoints)"
+            fish2.removeAllChildren()
+        }
+        
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask==ShoesCategory){
+            print("Shoes")
+            seconds -= 10
+            shoes.removeAllChildren()
+        }
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask==CansCategory){
+            print("Can")
+            seconds -= 10
+            cans.removeAllChildren()
+        }
+        
+    }
+
     
 }

@@ -35,6 +35,8 @@ class ScoreSpeed: SKScene , SKPhysicsContactDelegate{
         ok2.position = CGPointMake(self.size.width * 0.5 , self.size.height * 0.25)
         ok2.size.width = size.width / 4
         ok2.size.height = size.height / 7.5
+        
+        
     
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

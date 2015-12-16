@@ -23,7 +23,7 @@ class Shoes : SKNode {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addshoe),
-                SKAction.waitForDuration(11) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
+                SKAction.waitForDuration(10) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
                 ])
             ))
         
@@ -76,13 +76,13 @@ class Shoes : SKNode {
         
         shoe.runAction(SKAction.sequence([moveshoe, removeshoe]))
         
-        
+//        
         shoe.physicsBody = SKPhysicsBody(rectangleOfSize: shoe.self.size)
         shoe.physicsBody?.dynamic = true
         shoe.physicsBody?.affectedByGravity = false
         shoe.physicsBody?.allowsRotation = false
         shoe.physicsBody?.categoryBitMask = ShoesCategory
-        shoe.physicsBody?.contactTestBitMask = ShoesCategory | HookCategory
+        shoe.physicsBody?.contactTestBitMask = ShoesCategory 
         shoe.physicsBody?.collisionBitMask = 10
     }
 
