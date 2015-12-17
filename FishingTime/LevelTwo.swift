@@ -159,23 +159,35 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         }
 
     }
-    func controlHook(){
-        let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 3.0))
-        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 2.0))
+//    func controlHook(){
+//        let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 3.0))
+//        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 2.0))
+//        
+//        let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.54, duration: 3.0))
+//        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 2.0))
+//        
+//        hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
+//        rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
+//    }
+    func hookMoveDown(){
         
-        let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.54, duration: 3.0))
-        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 2.0))
+        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.02, duration: 5.0))
+        rope.runAction(SKAction.moveToY(self.frame.size.height * 0.54, duration: 5.0))
         
-        hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
-        rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
     }
+    func hookMoveUp(){
+        
+        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
+        rope.runAction(SKAction.moveToY(self.frame.size.height * 1.42, duration: 4.0))
+    }
+
 
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch: AnyObject in touches {
             
             let location = touch.locationInNode(self)
             
-            controlHook()
+            hookMoveDown()
             
             if btnclose.containsPoint(location){
                 let playScene = Play(size: self.size)
@@ -184,6 +196,12 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             }
         }
     }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        hookMoveUp()
+    }
+    
+    
     func didBeginContact(contact: SKPhysicsContact) {
         let a: SKPhysicsBody //= contact.bodyA
         let b: SKPhysicsBody //= contact.bodyB
@@ -202,7 +220,6 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             numPoints1 += 1
             points1.text = "\(numPoints1)"
             fish1.removeAllChildren()
-            
             
         }
         

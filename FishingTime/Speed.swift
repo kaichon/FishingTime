@@ -33,7 +33,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     let rope = SKSpriteNode(imageNamed: "rope")
 
 
-    var reduce = SKLabelNode(text: " - 10 seconds !! ")
+    var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
+    var reduce1 = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
     
     override func didMoveToView(view: SKView)  {
         
@@ -104,8 +105,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         addChild(cans)
         
         
-        
-
+       
     }
     
     
@@ -130,15 +130,16 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
     }
     
-    func controlHook(){
-        let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 3.0))
-        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 2.0))
+    func hookMoveDown(){
         
-        let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.54, duration: 3.0))
-        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 2.0))
+        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.02, duration: 5.0))
+        rope.runAction(SKAction.moveToY(self.frame.size.height * 0.54, duration: 5.0))
         
-        hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
-        rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
+    }
+    func hookMoveUp(){
+        
+        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
+        rope.runAction(SKAction.moveToY(self.frame.size.height * 1.42, duration: 4.0))
     }
    
     
@@ -148,8 +149,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         for touch: AnyObject in touches {
             
             let location = touch.locationInNode(self)
+            hookMoveDown()
             
-            controlHook()
             if btnclose.containsPoint(location){
                 let playScene = Play(size: self.size)
                 let transition = SKTransition.fadeWithDuration(0)
@@ -158,28 +159,10 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         }
     }
     
-    
-   
-    override func update(currentTime: CFTimeInterval) {
-//        updateEnemies()
-      
-
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        hookMoveUp()
     }
-////
-//    private func updateEnemies() {
-//        
-//        var enemiesToRemove:[Fish1] = []
-//         for node in fish1.children as! [Fish1] {
-//            if CGRectContainsPoint(hook.frame, node.position) {
-//                // Mark enemy for removal
-//                enemiesToRemove.append(node)
-//                print("test hit",node.frame, terminator: "")
-//                continue
-//            }
-//        }
-//        self.removeChildrenInArray(enemiesToRemove)
-//    }
-
+   
     func didBeginContact(contact: SKPhysicsContact) {
         let a: SKPhysicsBody //= contact.bodyA
         let b: SKPhysicsBody //= contact.bodyB
@@ -213,16 +196,40 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             print("Shoes")
             seconds -= 10
             shoes.removeAllChildren()
+            reduceTime()
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==CansCategory){
             print("Can")
             seconds -= 10
             cans.removeAllChildren()
+            reduceTime1()
         }
 
     }
    
-    
+    func  reduceTime() {
+        reduce.position = CGPoint(x: frame.size.width * 0.7 , y: frame.size.height * 0.4)
+        reduce.fontSize = 20
+        reduce.fontColor = UIColor.redColor()
+        
+        addChild(reduce)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 3.0))
+        let bb = SKAction.removeFromParent()
+        reduce.runAction(SKAction.sequence([aa,bb]))
+        
+    }
+    func  reduceTime1() {
+        
+        reduce1.position = CGPoint(x: frame.size.width * 0.7 , y: frame.size.height * 0.4)
+        reduce1.fontSize = 20
+        reduce1.fontColor = UIColor.redColor()
+        addChild(reduce1)
+        
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 3.0))
+        let bb = SKAction.removeFromParent()
+        reduce1.runAction(SKAction.sequence([aa,bb]))
+        
+    }
     
  }
