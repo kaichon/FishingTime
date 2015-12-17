@@ -136,12 +136,12 @@ class Play: SKScene {
                 
             }else if btnspeed.containsPoint(location){
                 let speedScene = Speed(size: self.size)
-                let transition = SKTransition.fadeWithDuration(1.5)
+                let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(speedScene, transition: transition)
 
             }else if btnlevel.containsPoint(location){
                 let LevelScene = LevelOne(size: self.size)
-                let transition = SKTransition.fadeWithDuration(1.5)
+                let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(LevelScene, transition: transition)
                 
             }

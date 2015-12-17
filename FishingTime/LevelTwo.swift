@@ -12,6 +12,7 @@ import GameplayKit
 @available(iOS 9.0, *)
 class LevelTwo: SKScene , SKPhysicsContactDelegate{
     
+    var status = Setting()
     
     private var fish1 = Fish1()
     private var fish2 = Fish2()
@@ -133,6 +134,24 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
+        
+        let soundDefault = NSUserDefaults.standardUserDefaults()
+        if (soundDefault.valueForKey("soundStatus") != nil){
+            status.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
+            print("soundMain\(status.soundStatus)")
+        }
+        
+        if status.soundStatus == 1 {
+            print("1")
+            
+        }
+        else{
+            let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
+            backgroundMusic.autoplayLooped = true
+            addChild(backgroundMusic)
+            
+        }
+
 
     }
     
@@ -203,15 +222,8 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     
     
     func didBeginContact(contact: SKPhysicsContact) {
-        let a: SKPhysicsBody //= contact.bodyA
-        let b: SKPhysicsBody //= contact.bodyB
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask{
-            a = contact.bodyA
-            b = contact.bodyB
-        }else{
-            a = contact.bodyB
-            b = contact.bodyA
-        }
+        let a: SKPhysicsBody = contact.bodyA
+        let b: SKPhysicsBody = contact.bodyB
         
         print("a:",a.categoryBitMask,"b:",b.categoryBitMask)
         
@@ -220,7 +232,9 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             numPoints1 += 1
             points1.text = "\(numPoints1)"
             fish1.removeAllChildren()
-            
+            if status.soundStatus == 0 {
+                runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
+            }
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == Fish2Category){
@@ -228,6 +242,9 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             numPoints2 += 1
             points2.text = "\(numPoints2)"
             fish2.removeAllChildren()
+            if status.soundStatus == 0 {
+                runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
+            }
         }
         
         

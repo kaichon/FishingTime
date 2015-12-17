@@ -13,6 +13,9 @@ import GameplayKit
 @available(iOS 9.0, *)
 class LevelOne: SKScene , SKPhysicsContactDelegate{
     
+    var status = Setting()
+
+    
     private var fish1 = Fish1()
     private var fish2 = Fish2()
     private var shoes = Shoes()
@@ -119,12 +122,28 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.9)
         addChild(hook)
 
+        let soundDefault = NSUserDefaults.standardUserDefaults()
+        if (soundDefault.valueForKey("soundStatus") != nil){
+            status.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
+            print("soundMain\(status.soundStatus)")
+        }
         
+        if status.soundStatus == 1 {
+            print("1")
+            
+        }
+        else{
+            let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
+            backgroundMusic.autoplayLooped = true
+            addChild(backgroundMusic)
+            
+        }
+
         
     }
     
     func setupGame()  {
-        seconds = 20
+        seconds = 120
         timeOut.text = "\(seconds)" //แสดงค่าเริ่มต้น
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         
@@ -190,15 +209,8 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         hookMoveUp()
     }
     func didBeginContact(contact: SKPhysicsContact) {
-        let a: SKPhysicsBody //= contact.bodyA
-        let b: SKPhysicsBody //= contact.bodyB
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask{
-            a = contact.bodyA
-            b = contact.bodyB
-        }else{
-            a = contact.bodyB
-            b = contact.bodyA
-        }
+        let a: SKPhysicsBody = contact.bodyA
+        let b: SKPhysicsBody = contact.bodyB
         
         print("a:",a.categoryBitMask,"b:",b.categoryBitMask)
         
@@ -207,7 +219,9 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
             numPoints += 1
             points.text = "\(numPoints)"
             fish1.removeAllChildren()
-            
+            if status.soundStatus == 0 {
+                runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
+            }
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==ShoesCategory){

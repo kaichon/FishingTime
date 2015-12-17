@@ -83,6 +83,8 @@ class Fish1 : SKNode {
        
         fish.runAction(SKAction.sequence([movefish, removefish]))
         
+        
+        
         fish.physicsBody = SKPhysicsBody(rectangleOfSize: fish.size)
         fish.physicsBody?.dynamic = true
         fish.physicsBody?.affectedByGravity = false

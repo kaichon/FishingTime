@@ -52,6 +52,7 @@
 		FD5CA6C31B0A94D400EEC868 /* fish.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FD5CA6C21B0A94D400EEC868 /* fish.atlas */; };
 		FD8069461C1C377B00DF39FC /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FD8069451C1C377B00DF39FC /* background.mp3 */; };
 		FDD93F4F1C233BC900100C46 /* soundHome.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FDD93F4E1C233BC900100C46 /* soundHome.mp3 */; };
+		FDD93F511C233EA700100C46 /* click.WAV in Resources */ = {isa = PBXBuildFile; fileRef = FDD93F501C233EA700100C46 /* click.WAV */; };
 		FDE420F51C1C8D42009C81B2 /* ScoreLevel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420F21C1C8D42009C81B2 /* ScoreLevel1.swift */; };
 		FDE420F61C1C8D42009C81B2 /* ScoreLevel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420F31C1C8D42009C81B2 /* ScoreLevel2.swift */; };
 		FDE420F71C1C8D42009C81B2 /* ScoreSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420F41C1C8D42009C81B2 /* ScoreSpeed.swift */; };
@@ -118,6 +119,7 @@
 		FD5CA6C21B0A94D400EEC868 /* fish.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fish.atlas; sourceTree = "<group>"; };
 		FD8069451C1C377B00DF39FC /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = SOURCE_ROOT; };
 		FDD93F4E1C233BC900100C46 /* soundHome.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = soundHome.mp3; sourceTree = "<group>"; };
+		FDD93F501C233EA700100C46 /* click.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.WAV; sourceTree = "<group>"; };
 		FDE420F21C1C8D42009C81B2 /* ScoreLevel1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreLevel1.swift; sourceTree = "<group>"; };
 		FDE420F31C1C8D42009C81B2 /* ScoreLevel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreLevel2.swift; sourceTree = "<group>"; };
 		FDE420F41C1C8D42009C81B2 /* ScoreSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSpeed.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				FD8069451C1C377B00DF39FC /* background.mp3 */,
+				FDD93F501C233EA700100C46 /* click.WAV */,
 				FDD93F4E1C233BC900100C46 /* soundHome.mp3 */,
 			);
 			name = Sound;
@@ -360,6 +363,7 @@
 				DEB00B531B0B2E9600E0169A /* Start2.png in Resources */,
 				DEB00B4F1B0B2E9600E0169A /* setting2.png in Resources */,
 				DEB00B441B0B2E9600E0169A /* HighScore.png in Resources */,
+				FDD93F511C233EA700100C46 /* click.WAV in Resources */,
 				DEB00B431B0B2E9600E0169A /* Close2.png in Resources */,
 				FD5CA6561B0A3A5D00EEC868 /* GameScene.sks in Resources */,
 				DED7DFBF1B0CF77D00430C20 /* shoe.atlas in Resources */,

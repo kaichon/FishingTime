@@ -28,7 +28,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     let btnSetting2 = SKSpriteNode(imageNamed: "setting2")
     let btnHighScore2 = SKSpriteNode(imageNamed: "HighScore2")
 
-    
     override func didMoveToView(view: SKView) {
         
         bgmanu.position = CGPointMake(size.width * 0.5, size.height/2)
@@ -100,7 +99,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             
         }
 
-
         
     }
 
@@ -111,7 +109,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
 
             if btnStart.containsPoint(location){
                 addChild(btnStart2)
-            
+                
             }else if btnSetting2.containsPoint(location){
                 addChild(btnSetting2)
                 
@@ -144,18 +142,17 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             
             let location = touch.locationInNode(self)
+            
             if btnStart.containsPoint(location){
-    
+                runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
                 let playScene = Play(size: self.size)
-                let transition = SKTransition.fadeWithDuration(0)
+                let transition = SKTransition.fadeWithDuration(0.2)
                 self.scene!.view?.presentScene(playScene, transition: transition)
-                
-                
+               
             }else if btnSetting.containsPoint(location){
                 let playScene = Setting(size: self.size)
                 let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(playScene, transition: transition)
-                
                 
             }else if btnHighScore.containsPoint(location){
                 let playScene = HighScore(size: self.size)
