@@ -25,7 +25,7 @@ class Setting: SKScene {
     
     let soundDefault = NSUserDefaults.standardUserDefaults()
     
-    let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
+    let backgroundMusic = SKAudioNode(fileNamed: "soundHome.mp3")
     
     let bgsetting = SKSpriteNode(imageNamed: "bgsetting")
 
