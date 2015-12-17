@@ -81,7 +81,7 @@ class Play: SKScene {
             
         }
         else{
-            let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
+            let backgroundMusic = SKAudioNode(fileNamed: "soundHome.mp3")
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
             

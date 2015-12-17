@@ -14,6 +14,8 @@ import UIKit
 @available(iOS 9.0, *)
 class HighScore: SKScene {
     
+    var status = Setting()
+    
     let btnclose = SKSpriteNode(imageNamed: "close")
     let btnclose2 = SKSpriteNode(imageNamed: "close2")
     let bghighScore = SKSpriteNode(imageNamed: "bgHighScore")
@@ -38,6 +40,25 @@ class HighScore: SKScene {
         btnclose2.position = CGPointMake(self.size.width * 0.88, self.size.height * 0.85)
         btnclose2.size.width = size.width / 15.5
         btnclose2.size.height = size.height / 9.5
+        
+        
+        let soundDefault = NSUserDefaults.standardUserDefaults()
+        if (soundDefault.valueForKey("soundStatus") != nil){
+            status.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
+            print("soundMain\(status.soundStatus)")
+        }
+        
+        if status.soundStatus == 1 {
+            print("1")
+            
+        }
+        else{
+            let backgroundMusic = SKAudioNode(fileNamed: "soundHome.mp3")
+            backgroundMusic.autoplayLooped = true
+            addChild(backgroundMusic)
+            
+        }
+
         
         
     }
