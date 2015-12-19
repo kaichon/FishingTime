@@ -43,7 +43,9 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     let agree = SKSpriteNode(imageNamed: "agree")
     
     let hitFish1 = SKSpriteNode(imageNamed: "fish")
-  
+    let hitShoes = SKSpriteNode(imageNamed: "shoe")
+    let hitCans = SKSpriteNode(imageNamed: "can")
+
     
     var reduce = SKLabelNode(text: " - 10s ! ")
     var reduce1 = SKLabelNode(text: " - 10s ! ")
@@ -271,6 +273,8 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
             seconds -= 10
             reduceTime()
             shoes.removeAllChildren()
+            hookMoveUp()
+            hitShoe()
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
            
         }
@@ -280,6 +284,8 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
             seconds -= 10
             reduceTime1()
             cans.removeAllChildren()
+            hookMoveUp()
+            hitCan()
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         
         }
@@ -299,6 +305,26 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         hitFish1.runAction(SKAction.sequence([aa,bb]))
     }
     
+    func hitShoe(){
+        hitShoes.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitShoes.size.width = 50
+        hitShoes.size.height = 35
+        //hitShoes.zRotation = CGFloat(M_PI) * 1.5
+        addChild(hitShoes)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let bb = SKAction.removeFromParent()
+        hitShoes.runAction(SKAction.sequence([aa,bb]))
+    }
+    func hitCan(){
+        hitCans.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitCans.size.width = 35
+        hitCans.size.height = 45
+        addChild(hitCans)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let bb = SKAction.removeFromParent()
+        hitCans.runAction(SKAction.sequence([aa,bb]))
+    }
+
     func  reduceTime() {
         reduce.position = CGPoint(x: frame.size.width * 0.1 , y: frame.size.height * 0.8)
         reduce.fontSize = 25

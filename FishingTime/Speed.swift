@@ -37,6 +37,9 @@ class Speed: SKScene , SKPhysicsContactDelegate{
 
     let hitFish1 = SKSpriteNode(imageNamed: "fish")
     let hitFish2 = SKSpriteNode(imageNamed: "chon")
+    let hitShoes = SKSpriteNode(imageNamed: "shoe")
+    let hitCans = SKSpriteNode(imageNamed: "can")
+
     
     var reduce = SKLabelNode(text: " - 10s ! ")
     var reduce1 = SKLabelNode(text: " - 10s ! ")
@@ -142,7 +145,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     //-------------------------------------------------------------
     
     func setupGame()  {
-        seconds = 50
+        seconds = 120
         timeOut.text = "\(seconds)" //แสดงค่าเริ่มต้น
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         
@@ -203,11 +206,6 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-    }
-   
-    
     func didBeginContact(contact: SKPhysicsContact) {
         let a: SKPhysicsBody = contact.bodyA
         let b: SKPhysicsBody = contact.bodyB
@@ -219,9 +217,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             points.text = "\(numPoints)"
             hitFish_1()
             fish1.removeAllChildren()
-//            hook.runAction(SKAction.moveToY(self.frame.size.height * 0.9, duration: 3.0))
-//            rope.runAction(SKAction.moveToY(self.frame.size.height * 1.42, duration: 3.0))
             hookMoveUp()
+            
             if status.soundStatus == 0 {
             runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
@@ -246,6 +243,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             print("Shoes")
             seconds -= 10
             shoes.removeAllChildren()
+            hitShoe()
+            hookMoveUp()
             reduceTime()
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
@@ -254,6 +253,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             print("Can")
             seconds -= 10
             cans.removeAllChildren()
+            hookMoveUp()
+            hitCan()
             reduceTime1()
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
@@ -284,6 +285,26 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         let bb = SKAction.removeFromParent()
         hitFish2.runAction(SKAction.sequence([aa,bb]))
     }
+    func hitShoe(){
+        hitShoes.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitShoes.size.width = 50
+        hitShoes.size.height = 35
+        //hitShoes.zRotation = CGFloat(M_PI) * 1.5
+        addChild(hitShoes)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let bb = SKAction.removeFromParent()
+        hitShoes.runAction(SKAction.sequence([aa,bb]))
+    }
+    func hitCan(){
+        hitCans.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitCans.size.width = 35
+        hitCans.size.height = 45
+        addChild(hitCans)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let bb = SKAction.removeFromParent()
+        hitCans.runAction(SKAction.sequence([aa,bb]))
+    }
+
     
     func  reduceTime() {
         reduce.position = CGPoint(x: frame.size.width * 0.1 , y: frame.size.height * 0.8)

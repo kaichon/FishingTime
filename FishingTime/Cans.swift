@@ -57,8 +57,8 @@ class Cans : SKNode {
         canned = SKSpriteNode(texture: temp)
         canned.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(cannedShoot, timePerFrame: 0.20, resize: false, restore: true)))
         
-        canned.size.width = 30
-        canned.size.height = 40
+        canned.size.width = 35
+        canned.size.height = 45
         
         
         //position
@@ -76,7 +76,7 @@ class Cans : SKNode {
         canned.physicsBody?.allowsRotation = false
         canned.physicsBody?.categoryBitMask = CansCategory
         canned.physicsBody?.contactTestBitMask = CansCategory 
-        canned.physicsBody?.collisionBitMask = 10
+        canned.physicsBody?.collisionBitMask = 0
     }
 
     

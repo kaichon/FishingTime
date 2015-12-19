@@ -74,7 +74,7 @@ class Fish1 : SKNode {
         
         
         //position
-        fish.position = CGPoint(x: frame.size.width + fish.size.width/2, y: fish.size.height * random(min: -0.2, max: 2.2))
+        fish.position = CGPoint(x: frame.size.width + fish.size.width/2, y: fish.size.height * random(min: -0.2, max: 2.0))
         addChild(fish)
         
         let movefish = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 6, max: 8))))

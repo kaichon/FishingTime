@@ -67,7 +67,7 @@ class Fish2 : SKNode {
         chon.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(chonShoot, timePerFrame: 0.07, resize: false, restore: true)))
         
         chon.size.width = 80
-        chon.size.height = 33
+        chon.size.height = 35
         
         
         chon.physicsBody = SKPhysicsBody(rectangleOfSize: chon.size) // 1
@@ -76,7 +76,7 @@ class Fish2 : SKNode {
         chon.physicsBody?.allowsRotation = false
         chon.physicsBody?.categoryBitMask = Fish2Category // 3
         chon.physicsBody?.contactTestBitMask = Fish2Category 
-        chon.physicsBody?.collisionBitMask = 10 
+        chon.physicsBody?.collisionBitMask = 0 
         
          let actualY = chon.size.height * random(min:  -0.2 , max: 2.2)
         

@@ -62,8 +62,8 @@ class Shoes : SKNode {
         shoe = SKSpriteNode(texture: temp)
         shoe.runAction( SKAction.repeatActionForever(SKAction.animateWithTextures(shoeShoot, timePerFrame: 0.40, resize: false, restore: true)))
         
-        shoe.size.width = 45
-        shoe.size.height = 30
+        shoe.size.width = 50
+        shoe.size.height = 35
         
         
         
@@ -83,7 +83,7 @@ class Shoes : SKNode {
         shoe.physicsBody?.allowsRotation = false
         shoe.physicsBody?.categoryBitMask = ShoesCategory
         shoe.physicsBody?.contactTestBitMask = ShoesCategory 
-        shoe.physicsBody?.collisionBitMask = 10
+        shoe.physicsBody?.collisionBitMask = 0
     }
 
 
