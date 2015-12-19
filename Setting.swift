@@ -28,8 +28,6 @@ class Setting: SKScene {
     let backgroundMusic = SKAudioNode(fileNamed: "soundHome.mp3")
     
     let bgsetting = SKSpriteNode(imageNamed: "bgsetting")
-
-//    var num = UInt()
     
     
         override func didMoveToView(view: SKView) {
@@ -75,8 +73,6 @@ class Setting: SKScene {
             
     /*------------------------------------------------------------------------------*/
             
-            
-//            let soundDefault = NSUserDefaults.standardUserDefaults()
             //การอ่านค่า
             if (soundDefault.valueForKey("soundStatus") != nil){
                 soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
@@ -98,11 +94,11 @@ class Setting: SKScene {
             }
             
            
-                
-                //
             
         
     }
+    
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch: AnyObject in touches {
             

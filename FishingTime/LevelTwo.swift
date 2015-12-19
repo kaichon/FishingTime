@@ -42,9 +42,17 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
 
     let agree = SKSpriteNode(imageNamed: "agree")
     let agree2 = SKSpriteNode(imageNamed: "agree")
-
+    let pp = SKSpriteNode(imageNamed: "p")
+    
+    let hitFish1 = SKSpriteNode(imageNamed: "fish")
+    let hitFish2 = SKSpriteNode(imageNamed: "chon")
+    
     var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
     var reduce1 = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
+    
+
+//    var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
+//    var reduce1 = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
     
     
     override func didMoveToView(view: SKView)  {
@@ -130,6 +138,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         addChild(cans)
 
         
+        
         // --------- คนตกปลา เบ็ด------------------
         man.position = CGPointMake(self.size.width * 0.26 , self.size.height * 0.69)
         man.size.width = size.width/1.9
@@ -144,6 +153,11 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.9)
         addChild(hook)
         
+        pp.position = CGPointMake(self.size.width * 0.52, self.size.height * 0.99)
+        pp.size.width = size.width / 4
+        pp.size.height = size.height / 15
+        addChild(pp)
+        
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         
@@ -153,11 +167,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             print("soundMain\(status.soundStatus)")
         }
         
-        if status.soundStatus == 1 {
-            print("1")
-            
-        }
-        else{
+        if status.soundStatus == 0 {
             let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
@@ -190,35 +200,48 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         }
 
     }
-//    func controlHook(){
-//        let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 3.0))
-//        let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 2.0))
-//        
-//        let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.54, duration: 3.0))
-//        let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 2.0))
-//        
-//        hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
-//        rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
-//    }
-    func hookMoveDown(){
+    
+    func controlHook(){
+        let positionUp = self.frame.size.height * 0.85
         
-        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.02, duration: 5.0))
-        rope.runAction(SKAction.moveToY(self.frame.size.height * 0.54, duration: 5.0))
-        
+        if(Int(hook.position.y) >= Int(positionUp)){
+            
+            let hookmovwDown = (SKAction.moveToY(self.frame.size.height * 0.02, duration: 2.5))
+            let hookmoveUp = (SKAction.moveToY(self.frame.size.height * 0.9, duration: 2.0))
+            
+            let ropeDown = (SKAction.moveToY(self.frame.size.height * 0.54, duration: 2.5))
+            let ropeUp = (SKAction.moveToY(self.frame.size.height * 1.42, duration: 2.0))
+            
+            hook.runAction(SKAction.sequence([hookmovwDown, hookmoveUp]))
+            rope.runAction(SKAction.sequence([ropeDown, ropeUp]))
+        }
     }
+    
+//    func hookMoveDown(){
+//        
+//        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.02, duration: 5.0))
+//        rope.runAction(SKAction.moveToY(self.frame.size.height * 0.54, duration: 5.0))
+//        
+//    }
+//    func hookMoveUp(){
+//        
+//        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
+//        rope.runAction(SKAction.moveToY(self.frame.size.height * 1.42, duration: 4.0))
+//    }
+//
+
     func hookMoveUp(){
         
-        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
-        rope.runAction(SKAction.moveToY(self.frame.size.height * 1.42, duration: 4.0))
+        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.9, duration: 3.0))
+        rope.runAction(SKAction.moveToY(self.frame.size.height * 1.42, duration: 3.0))
     }
-
-
+    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch: AnyObject in touches {
             
             let location = touch.locationInNode(self)
             
-            hookMoveDown()
+            controlHook()
             
             if btnclose.containsPoint(location){
                 let playScene = Play(size: self.size)
@@ -226,10 +249,6 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
                 self.scene!.view?.presentScene(playScene, transition: transition)
             }
         }
-    }
-    
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        hookMoveUp()
     }
     
     
@@ -241,8 +260,10 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == Fish1Category){
             print("Fish1")
-            
+            hitFish_1()
             fish1.removeAllChildren()
+            hookMoveUp()
+    
             if status.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
@@ -261,7 +282,9 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == Fish2Category){
             print("Fish2")
+            hitFish_2()
             fish2.removeAllChildren()
+            hookMoveUp()
             if status.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
@@ -283,6 +306,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             seconds -= 10
             shoes.removeAllChildren()
             reduceTime()
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == CansCategory){
@@ -290,6 +314,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             seconds -= 10
             cans.removeAllChildren()
             reduceTime1()
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
         
     }
@@ -300,6 +325,31 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             self.scene!.view?.presentScene(Scene, transition: transition)
         }
 
+    }
+
+    
+    func hitFish_1(){
+        
+        hitFish1.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitFish1.size.width = 60
+        hitFish1.size.height = 35
+        hitFish1.zRotation = CGFloat(M_PI) * 1.5
+        addChild(hitFish1)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let bb = SKAction.removeFromParent()
+        hitFish1.runAction(SKAction.sequence([aa,bb]))
+    }
+    
+    func hitFish_2(){
+        
+        hitFish2.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitFish2.size.width = 80
+        hitFish2.size.height = 33
+        hitFish2.zRotation = CGFloat(M_PI) * 1.5
+        addChild(hitFish2)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let bb = SKAction.removeFromParent()
+        hitFish2.runAction(SKAction.sequence([aa,bb]))
     }
 
     func  reduceTime() {

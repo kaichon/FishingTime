@@ -76,15 +76,10 @@ class Play: SKScene {
             print("soundMain\(status.soundStatus)")
         }
         
-        if status.soundStatus == 1 {
-            print("1")
-            
-        }
-        else{
+        if status.soundStatus == 0 {
             let backgroundMusic = SKAudioNode(fileNamed: "soundHome.mp3")
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
-            
         }
 
         

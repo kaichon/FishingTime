@@ -31,7 +31,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         
         bgmanu.position = CGPointMake(size.width * 0.5, size.height/2)
-        //bgmanu.size = CGSizeMake(1136/2, 640/2)
         bgmanu.size.width = frame.size.width
         bgmanu.size.height = frame.size.height
         addChild(bgmanu)
@@ -39,21 +38,18 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         //ButtonStart
         btnStart.position = CGPointMake(frame.size.width * 0.7, frame.size.height * 0.75)
-//        btnStart.size = CGSizeMake(140,55)
         btnStart.size.width = size.width / 4
         btnStart.size.height = size.height / 5
         addChild(btnStart)
         
         //ButtonSetting
         btnSetting.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.5)
-//        btnSetting.size = CGSizeMake(140,55)
         btnSetting.size.width = size.width / 4
         btnSetting.size.height = size.height / 5
         addChild(btnSetting)
         
         //ButtonHighScore
         btnHighScore.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.25)
-//        btnHighScore.size = CGSizeMake(140,55)
         btnHighScore.size.width = size.width / 4
         btnHighScore.size.height = size.height / 5
         addChild(btnHighScore)
@@ -63,21 +59,18 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         //ButtonStart2
         btnStart2.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.75)
-//        btnStart2.size = CGSizeMake(140,55)
         btnStart2.size.width = size.width / 4
         btnStart2.size.height = size.height / 5
 
         
         //ButtonSetting
         btnSetting2.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.5)
-//        btnSetting2.size = CGSizeMake(140,55)
         btnSetting2.size.width = size.width / 4
         btnSetting2.size.height = size.height / 5
         
         //ButtonHighScore
         btnHighScore2.position = CGPointMake(self.size.width * 0.7, self.size.height * 0.25)
-        //btnHighScore2.size = CGSizeMake(140,55)
-        btnHighScore2.size.width = size.width / 4
+         btnHighScore2.size.width = size.width / 4
         btnHighScore2.size.height = size.height / 5
 
         
@@ -88,11 +81,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             print("soundMain\(status.soundStatus)")
         }
         
-        if status.soundStatus == 1 {
-            print("1")
-            
-        }
-        else{
+        if status.soundStatus == 0 {
             let backgroundMusic = SKAudioNode(fileNamed: "soundHome.mp3")
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
@@ -144,7 +133,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             let location = touch.locationInNode(self)
             
             if btnStart.containsPoint(location){
-                runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
                 let playScene = Play(size: self.size)
                 let transition = SKTransition.fadeWithDuration(0.2)
                 self.scene!.view?.presentScene(playScene, transition: transition)
