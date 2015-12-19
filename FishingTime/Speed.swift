@@ -8,7 +8,7 @@
 import SpriteKit
 import AVFoundation
 import GameplayKit
-
+import AudioToolbox
 @available(iOS 9.0, *)
 class Speed: SKScene , SKPhysicsContactDelegate{
     
@@ -188,7 +188,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         let b: SKPhysicsBody = contact.bodyB
         
         print("a:",a.categoryBitMask,"b:",b.categoryBitMask)
-        
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish1Category){
             print("Fish1")
             numPoints += 1
