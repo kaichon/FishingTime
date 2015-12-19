@@ -16,8 +16,8 @@ class Setting: SKScene {
     
     var soundStatus = 0
     
-    let btnclose = SKSpriteNode(imageNamed: "close")
-    let btnclose2 = SKSpriteNode(imageNamed: "close2")
+    let btnclose = SKSpriteNode(imageNamed: "Close")
+    let btnclose2 = SKSpriteNode(imageNamed: "Close2")
     let on = SKSpriteNode(imageNamed: "on")
     let off = SKSpriteNode(imageNamed: "off")
     let volume = SKSpriteNode(imageNamed: "volume")

@@ -34,7 +34,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     let fullscore = SKLabelNode(text: "/3")
     let fullscore2 = SKLabelNode(text: "/2")
 
-    let btnclose = SKSpriteNode(imageNamed: "close")
+    let btnclose = SKSpriteNode(imageNamed: "Close")
     
     let man = SKSpriteNode(imageNamed: "man")
     let hook = Control()

@@ -32,7 +32,6 @@
 		DEC1E9FD1BF27453002D6594 /* Fish1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1E9FC1BF27453002D6594 /* Fish1.swift */; };
 		DEC1E9FF1BF27EF1002D6594 /* Fiah2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1E9FE1BF27EF1002D6594 /* Fiah2.swift */; };
 		DEC1EA011BF287E8002D6594 /* Shoes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1EA001BF287E8002D6594 /* Shoes.swift */; };
-		DEC1EA031BF28CE8002D6594 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC1EA021BF28CE8002D6594 /* Images.xcassets */; };
 		DEC1EA051BF29042002D6594 /* Cans.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC1EA041BF29042002D6594 /* Cans.swift */; };
 		DED7DFB91B0CCFD000430C20 /* LevelOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED7DFB81B0CCFD000430C20 /* LevelOne.swift */; };
 		DED7DFBB1B0CCFE500430C20 /* LevelTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED7DFBA1B0CCFE500430C20 /* LevelTwo.swift */; };
@@ -57,6 +56,7 @@
 		FDE420F61C1C8D42009C81B2 /* ScoreLevel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420F31C1C8D42009C81B2 /* ScoreLevel2.swift */; };
 		FDE420F71C1C8D42009C81B2 /* ScoreSpeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420F41C1C8D42009C81B2 /* ScoreSpeed.swift */; };
 		FDE420F91C1CA78B009C81B2 /* Control.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE420F81C1CA78B009C81B2 /* Control.swift */; };
+		FDF111221C25BC2800040FCC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDF111211C25BC2800040FCC /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +95,6 @@
 		DEC1E9FC1BF27453002D6594 /* Fish1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fish1.swift; sourceTree = "<group>"; };
 		DEC1E9FE1BF27EF1002D6594 /* Fiah2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fiah2.swift; sourceTree = "<group>"; };
 		DEC1EA001BF287E8002D6594 /* Shoes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shoes.swift; sourceTree = "<group>"; };
-		DEC1EA021BF28CE8002D6594 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DEC1EA041BF29042002D6594 /* Cans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cans.swift; sourceTree = "<group>"; };
 		DED7DFB81B0CCFD000430C20 /* LevelOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelOne.swift; sourceTree = "<group>"; };
 		DED7DFBA1B0CCFE500430C20 /* LevelTwo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelTwo.swift; sourceTree = "<group>"; };
@@ -124,6 +123,7 @@
 		FDE420F31C1C8D42009C81B2 /* ScoreLevel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreLevel2.swift; sourceTree = "<group>"; };
 		FDE420F41C1C8D42009C81B2 /* ScoreSpeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreSpeed.swift; sourceTree = "<group>"; };
 		FDE420F81C1CA78B009C81B2 /* Control.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Control.swift; sourceTree = "<group>"; };
+		FDF111211C25BC2800040FCC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,8 +166,8 @@
 		FD5CA6501B0A3A5D00EEC868 /* FistingTime */ = {
 			isa = PBXGroup;
 			children = (
+				FDF111211C25BC2800040FCC /* Images.xcassets */,
 				FDB1F27D1C1B4D4B009F7249 /* Sound */,
-				DEC1EA021BF28CE8002D6594 /* Images.xcassets */,
 				FD5CA67B1B0A66A800EEC868 /* button */,
 				FD5CA6531B0A3A5D00EEC868 /* AppDelegate.swift */,
 				FDE420F81C1CA78B009C81B2 /* Control.swift */,
@@ -349,12 +349,12 @@
 				DEB00B421B0B2E9600E0169A /* Close.png in Resources */,
 				DEB00B4C1B0B2E9600E0169A /* on.png in Resources */,
 				FD5CA6621B0A3A5D00EEC868 /* LaunchScreen.xib in Resources */,
+				FDF111221C25BC2800040FCC /* Images.xcassets in Resources */,
 				DEB00B511B0B2E9600E0169A /* speed2.png in Resources */,
 				DEB00B471B0B2E9600E0169A /* level2.png in Resources */,
 				DEB00B491B0B2E9600E0169A /* off2.png in Resources */,
 				DEB00B4A1B0B2E9600E0169A /* ok.png in Resources */,
 				DEB00B4B1B0B2E9600E0169A /* ok2.png in Resources */,
-				DEC1EA031BF28CE8002D6594 /* Images.xcassets in Resources */,
 				FD5CA6C11B0A94C900EEC868 /* chon.atlas in Resources */,
 				FD8069461C1C377B00DF39FC /* background.mp3 in Resources */,
 				FD5CA6C31B0A94D400EEC868 /* fish.atlas in Resources */,

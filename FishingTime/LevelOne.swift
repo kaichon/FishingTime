@@ -34,7 +34,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     var numPoints = 0
     
     let bg = SKSpriteNode(imageNamed: "BGLavel1")
-    let btnclose = SKSpriteNode(imageNamed: "close")
+    let btnclose = SKSpriteNode(imageNamed: "Close")
     
     let man = SKSpriteNode(imageNamed: "man")
     

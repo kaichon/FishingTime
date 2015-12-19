@@ -17,11 +17,11 @@ class Play: SKScene {
     let bgmode = SKSpriteNode(imageNamed: "bgmode.jpg")
     let btnlevel = SKSpriteNode(imageNamed: "level")
     let btnspeed = SKSpriteNode(imageNamed: "speed")
-    let btnclose = SKSpriteNode(imageNamed: "close")
+    let btnclose = SKSpriteNode(imageNamed: "Close")
     
     let btnlevel2 = SKSpriteNode(imageNamed: "level2")
     let btnspeed2 = SKSpriteNode(imageNamed: "speed2")
-    let btnclose2 = SKSpriteNode(imageNamed: "close2")
+    let btnclose2 = SKSpriteNode(imageNamed: "Close2")
     
     override func didMoveToView(view: SKView) {
         

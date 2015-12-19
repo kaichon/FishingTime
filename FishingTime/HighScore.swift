@@ -16,8 +16,8 @@ class HighScore: SKScene {
     
     var status = Setting()
     
-    let btnclose = SKSpriteNode(imageNamed: "close")
-    let btnclose2 = SKSpriteNode(imageNamed: "close2")
+    let btnclose = SKSpriteNode(imageNamed: "Close")
+    let btnclose2 = SKSpriteNode(imageNamed: "Close2")
     let bghighScore = SKSpriteNode(imageNamed: "bgHighScore")
     
     override func didMoveToView(view: SKView) {

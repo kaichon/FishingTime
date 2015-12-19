@@ -24,7 +24,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     var seconds = 0
     var timer = NSTimer()
     let bg = SKSpriteNode(imageNamed: "BGSpeed")
-    let btnclose = SKSpriteNode(imageNamed: "close")
+    let btnclose = SKSpriteNode(imageNamed: "Close")
     
     
     var points = SKLabelNode(text: "0")
