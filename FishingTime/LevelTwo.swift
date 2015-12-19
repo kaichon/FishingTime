@@ -40,8 +40,13 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     let hook = Control()
     let rope = SKSpriteNode(imageNamed: "rope")
 
-    
+    let agree = SKSpriteNode(imageNamed: "agree")
+    let agree2 = SKSpriteNode(imageNamed: "agree")
 
+    var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
+    var reduce1 = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
+    
+    
     override func didMoveToView(view: SKView)  {
         
         bg.position = CGPointMake(self.size.width / 2, self.size.height/2)
@@ -52,7 +57,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         // ตำแหน่งการแสดงคะแนน ในหน้าจอ ------------------------------------------------------
         points1.position = CGPoint(x: frame.size.width * 0.88, y: frame.size.height * 0.93)
-        points1.fontColor = UIColor.redColor()
+        points1.fontColor = UIColor.blackColor()
         points1.fontSize = 20
         points1.fontName = "Courier"
         addChild(points1)
@@ -65,7 +70,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         // ตำแหน่งการแสดงคะแนน ในหน้าจอ
         points2.position = CGPoint(x: frame.size.width * 0.88, y: frame.size.height * 0.85)
-        points2.fontColor = UIColor.redColor()
+        points2.fontColor = UIColor.blackColor()
         points2.fontSize = 20
         points2.fontName = "Courier"
         addChild(points2)
@@ -91,6 +96,13 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         level.fontColor = UIColor.redColor()
         addChild(level)
         
+        agree.position = CGPointMake(frame.size.width * 0.75, frame.size.height * 0.95)
+        agree.size.width = size.width / 20
+        agree.size.height = size.height / 20
+        
+        agree2.position = CGPointMake(frame.size.width * 0.72, frame.size.height * 0.86)
+        agree2.size.width = size.width / 20
+        agree2.size.height = size.height / 20
         
         setupGame()
         backgroundColor = SKColor.whiteColor()
@@ -152,7 +164,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             
         }
 
-
+        
     }
     
     func setupGame()  {
@@ -229,21 +241,39 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == Fish1Category){
             print("Fish1")
-            numPoints1 += 1
-            points1.text = "\(numPoints1)"
+            
             fish1.removeAllChildren()
             if status.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
-        }
+            
+            if(numPoints1 <= 2){
+                numPoints1 += 1
+                points1.text = "\(numPoints1)"
+                if(numPoints1 == 3 ){
+                    points1.fontColor = UIColor.redColor()
+                    addChild(agree)
+                    
+                }
+            }
+
+            }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == Fish2Category){
             print("Fish2")
-            numPoints2 += 1
-            points2.text = "\(numPoints2)"
             fish2.removeAllChildren()
             if status.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
+            }
+            
+            if(numPoints2 <= 1){
+                numPoints2 += 1
+                points2.text = "\(numPoints2)"
+                if(numPoints2 == 2 ){
+                    points2.fontColor = UIColor.redColor()
+                    addChild(agree2)
+                    
+                }
             }
         }
         
@@ -252,13 +282,47 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             print("Shoes")
             seconds -= 10
             shoes.removeAllChildren()
+            reduceTime()
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == CansCategory){
             print("Can")
             seconds -= 10
             cans.removeAllChildren()
+            reduceTime1()
         }
+        
+    }
+    override func update(currentTime: NSTimeInterval) {
+        if((numPoints1 == 3) && (numPoints2 == 2)){
+            let Scene = ScoreLevel2(size: self.size)
+            let transition = SKTransition.fadeWithDuration(2)
+            self.scene!.view?.presentScene(Scene, transition: transition)
+        }
+
+    }
+
+    func  reduceTime() {
+        reduce.position = CGPoint(x: frame.size.width * 0.7 , y: frame.size.height * 0.4)
+        reduce.fontSize = 20
+        reduce.fontColor = UIColor.redColor()
+        
+        addChild(reduce)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 3.0))
+        let bb = SKAction.removeFromParent()
+        reduce.runAction(SKAction.sequence([aa,bb]))
+        
+    }
+    func  reduceTime1() {
+        
+        reduce1.position = CGPoint(x: frame.size.width * 0.7 , y: frame.size.height * 0.4)
+        reduce1.fontSize = 20
+        reduce1.fontColor = UIColor.redColor()
+        addChild(reduce1)
+        
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 3.0))
+        let bb = SKAction.removeFromParent()
+        reduce1.runAction(SKAction.sequence([aa,bb]))
         
     }
 

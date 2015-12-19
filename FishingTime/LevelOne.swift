@@ -39,7 +39,11 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     let man = SKSpriteNode(imageNamed: "man")
     
     let rope = SKSpriteNode(imageNamed: "rope")
-
+    let pp = SKSpriteNode(imageNamed: "p")
+    let agree = SKSpriteNode(imageNamed: "agree")
+    
+    var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
+    var reduce1 = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
     /*
     override init() {
         //rope2 = Rope(
@@ -62,7 +66,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
        
         // ตำแหน่งการแสดงคะแนน ในหน้าจอ
         points.position = CGPoint(x: frame.size.width * 0.88, y: frame.size.height * 0.93)
-        points.fontColor = UIColor.redColor()
+        points.fontColor = UIColor.blackColor()
         points.fontSize = 20
         points.fontName = "Courier"
         addChild(points)
@@ -84,6 +88,11 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         level.fontSize = 30
         level.fontColor = UIColor.redColor()
         addChild(level)
+        
+        agree.position = CGPointMake(frame.size.width * 0.75, frame.size.height * 0.95)
+        agree.size.width = size.width / 20
+        agree.size.height = size.height / 20
+       
         
         setupGame()
         backgroundColor = SKColor.whiteColor()
@@ -121,6 +130,11 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         
         hook.position = CGPointMake(self.size.width * 0.52 , self.size.height * 0.9)
         addChild(hook)
+        
+        pp.position = CGPointMake(self.size.width * 0.52, self.size.height * 0.99)
+        pp.size.width = size.width / 4
+        pp.size.height = size.height / 15
+        addChild(pp)
 
         let soundDefault = NSUserDefaults.standardUserDefaults()
         if (soundDefault.valueForKey("soundStatus") != nil){
@@ -128,11 +142,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
             print("soundMain\(status.soundStatus)")
         }
         
-        if status.soundStatus == 1 {
-            print("1")
-            
-        }
-        else{
+        if status.soundStatus == 0 {
             let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
@@ -216,27 +226,74 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == Fish1Category){
             print("Fish1")
-            numPoints += 1
-            points.text = "\(numPoints)"
+            
+            
             fish1.removeAllChildren()
             if status.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
+            
+            if(numPoints <= 2){
+                numPoints += 1
+                points.text = "\(numPoints)"
+                if(numPoints == 3 ){
+                    points.fontColor = UIColor.redColor()
+                    addChild(agree)
+                    
+                        let Scene = ScoreLevel1(size: self.size)
+                        let transition = SKTransition.fadeWithDuration(2)
+                        self.scene!.view?.presentScene(Scene, transition: transition)
+                
+                }
+                
+                
+            }
+            
+            
+                
+                
+                
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==ShoesCategory){
             print("Shoes")
             seconds -= 10
             shoes.removeAllChildren()
+            reduceTime()
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==CansCategory){
             print("Can")
             seconds -= 10
             cans.removeAllChildren()
+            reduceTime1()
         }
         
     }
+    func  reduceTime() {
+        reduce.position = CGPoint(x: frame.size.width * 0.7 , y: frame.size.height * 0.4)
+        reduce.fontSize = 20
+        reduce.fontColor = UIColor.redColor()
+        
+        addChild(reduce)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 3.0))
+        let bb = SKAction.removeFromParent()
+        reduce.runAction(SKAction.sequence([aa,bb]))
+        
+    }
+    func  reduceTime1() {
+        
+        reduce1.position = CGPoint(x: frame.size.width * 0.7 , y: frame.size.height * 0.4)
+        reduce1.fontSize = 20
+        reduce1.fontColor = UIColor.redColor()
+        addChild(reduce1)
+        
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 3.0))
+        let bb = SKAction.removeFromParent()
+        reduce1.runAction(SKAction.sequence([aa,bb]))
+        
+    }
+
 
     
 }

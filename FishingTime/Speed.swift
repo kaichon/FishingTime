@@ -35,6 +35,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     let rope = SKSpriteNode(imageNamed: "rope")
 
 
+    let hitFish1 = SKSpriteNode(imageNamed: "fish")
+    
     var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
     var reduce1 = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
     
@@ -215,6 +217,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             seconds -= 10
             shoes.removeAllChildren()
             reduceTime()
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==CansCategory){
@@ -222,10 +225,21 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             seconds -= 10
             cans.removeAllChildren()
             reduceTime1()
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
 
     }
-   
+    
+//    func hitFish(){
+//        
+//        hitFish1.position = CGPoint(x: frame.size.width * 0.5 , y: frame.size.height * 0.4)
+//        hitFish1.size.width = 60
+//        hitFish1.size.height = 35
+//        addChild(hitFish1)
+//        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 3.0))
+//        let bb = SKAction.removeFromParent()
+//        hitFish1.runAction(SKAction.sequence([aa,bb]))
+//    }
     func  reduceTime() {
         reduce.position = CGPoint(x: frame.size.width * 0.7 , y: frame.size.height * 0.4)
         reduce.fontSize = 20
