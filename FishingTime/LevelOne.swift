@@ -45,8 +45,8 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     let hitFish1 = SKSpriteNode(imageNamed: "fish")
   
     
-    var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
-    var reduce1 = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
+    var reduce = SKLabelNode(text: " - 10s ! ")
+    var reduce1 = SKLabelNode(text: " - 10s ! ")
     /*
     override init() {
         //rope2 = Rope(
@@ -299,24 +299,26 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     }
     
     func  reduceTime() {
-        reduce.position = CGPoint(x: frame.size.width * 0.7 , y: frame.size.height * 0.4)
-        reduce.fontSize = 20
+        reduce.position = CGPoint(x: frame.size.width * 0.1 , y: frame.size.height * 0.8)
+        reduce.fontSize = 25
+        reduce.fontName = "Courier"
         reduce.fontColor = UIColor.redColor()
         
         addChild(reduce)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 3.0))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.3, duration: 3.0))
         let bb = SKAction.removeFromParent()
         reduce.runAction(SKAction.sequence([aa,bb]))
         
     }
     func  reduceTime1() {
         
-        reduce1.position = CGPoint(x: frame.size.width * 0.7 , y: frame.size.height * 0.4)
-        reduce1.fontSize = 20
+        reduce1.position = CGPoint(x: frame.size.width * 0.1 , y: frame.size.height * 0.8)
+        reduce1.fontSize = 25
+        reduce1.fontName = "Courier"
         reduce1.fontColor = UIColor.redColor()
         addChild(reduce1)
         
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 3.0))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.3, duration: 3.0))
         let bb = SKAction.removeFromParent()
         reduce1.runAction(SKAction.sequence([aa,bb]))
         
