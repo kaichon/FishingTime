@@ -19,6 +19,7 @@ class HighScore: SKScene {
     let btnclose = SKSpriteNode(imageNamed: "Close")
     let btnclose2 = SKSpriteNode(imageNamed: "Close2")
     let bghighScore = SKSpriteNode(imageNamed: "bgHighScore")
+    var textscoreSpeed = SKLabelNode(text: "0")
     
     override func didMoveToView(view: SKView) {
         
@@ -40,6 +41,12 @@ class HighScore: SKScene {
         btnclose2.position = CGPointMake(self.size.width * 0.88, self.size.height * 0.85)
         btnclose2.size.width = size.width / 15.5
         btnclose2.size.height = size.height / 9.5
+        
+        textscoreSpeed.position = CGPoint(x: frame.size.width * 0.67, y: frame.size.height * 0.5)
+        textscoreSpeed.fontColor = UIColor.redColor()
+        textscoreSpeed.fontSize = 25
+        textscoreSpeed.fontName = "Courier"
+        addChild(textscoreSpeed)
         
         
         let soundDefault = NSUserDefaults.standardUserDefaults()
