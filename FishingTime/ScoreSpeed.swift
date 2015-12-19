@@ -14,11 +14,15 @@ import AVFoundation
 
 @available(iOS 9.0, *)
 class ScoreSpeed: SKScene , SKPhysicsContactDelegate{
-
+    
+    let score = Speed()
 
     let bgscore = SKSpriteNode(imageNamed: "bgscore")
     let ok = SKSpriteNode(imageNamed: "ok")
     let ok2 = SKSpriteNode(imageNamed: "ok2")
+    var textscore1 = SKLabelNode(text: "0")
+    var score1 = 0
+    
     
     override func didMoveToView(view: SKView)  {
         
@@ -36,7 +40,21 @@ class ScoreSpeed: SKScene , SKPhysicsContactDelegate{
         ok2.size.width = size.width / 4
         ok2.size.height = size.height / 7.5
         
+        textscore1.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.5)
+        textscore1.fontColor = UIColor.redColor()
+        textscore1.fontSize = 50
+        textscore1.fontName = "Courier"
         
+        let scoreDefault = NSUserDefaults.standardUserDefaults()
+        if (scoreDefault.valueForKey("sscore") != nil){
+            score.sscore = scoreDefault.valueForKey("sscore") as! Int!
+            print("scoreMain\(score.sscore)")
+            
+        }
+        
+        score1 = score.sscore
+        textscore1.text = "\(score1)"
+        addChild(textscore1)
     
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

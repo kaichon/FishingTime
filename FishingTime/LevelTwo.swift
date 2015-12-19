@@ -318,6 +318,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         }
         
     }
+    
     override func update(currentTime: NSTimeInterval) {
         if((numPoints1 == 3) && (numPoints2 == 2)){
             let Scene = ScoreLevel2(size: self.size)

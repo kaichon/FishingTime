@@ -35,6 +35,7 @@ class ScoreLevel1: SKScene , SKPhysicsContactDelegate{
         ok2.size.width = size.width / 4
         ok2.size.height = size.height / 7.5
         
+        
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch: AnyObject in touches {

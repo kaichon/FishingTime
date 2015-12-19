@@ -163,7 +163,7 @@ class Setting: SKScene {
     func Sound(){  //การ save ค่า (การจดจำค่า)
         soundDefault.setValue(soundStatus, forKey: "soundStatus")
         soundDefault.synchronize()
-        print("soundAA\(soundStatus)")
+        print("sound\(soundStatus)")
     }
 
     

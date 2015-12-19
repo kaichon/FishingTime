@@ -254,6 +254,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
                 if(numPoints == 3 ){
                     points.fontColor = UIColor.redColor()
                     addChild(agree)
+                    print("time ", 120 - seconds)
                     
                         let Scene = ScoreLevel1(size: self.size)
                         let transition = SKTransition.fadeWithDuration(2)

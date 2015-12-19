@@ -41,6 +41,9 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     var reduce = SKLabelNode(text: " - 10s ! ")
     var reduce1 = SKLabelNode(text: " - 10s ! ")
     
+    var scoreDefault = NSUserDefaults.standardUserDefaults()
+    var sscore = 0
+    
     override func didMoveToView(view: SKView)  {
         
         
@@ -129,10 +132,14 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             addChild(backgroundMusic)
             
         }
+        
+        if (scoreDefault.valueForKey("sscore") != nil){
+            sscore = soundDefault.valueForKey("sscore") as! Int!
+            print("scoreMain\(sscore)")
+        }
 
-       
     }
-    
+    //-------------------------------------------------------------
     
     func setupGame()  {
         seconds = 50
@@ -148,6 +155,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         if(seconds <= 0)  {
             timer.invalidate()
             
+            sscore = numPoints
+            scoreNum()
             let ScoreSpeedScene = ScoreSpeed(size: self.size)
             let transition = SKTransition.fadeWithDuration(0)
             self.scene!.view?.presentScene(ScoreSpeedScene, transition: transition)
@@ -216,6 +225,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             if status.soundStatus == 0 {
             runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
+            
+            
         }
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish2Category){
@@ -247,6 +258,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
 
+        
     }
     
     func hitFish_1(){
@@ -299,4 +311,12 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
     }
     
+    func scoreNum(){  //การ save ค่า (การจดจำค่า)
+        scoreDefault.setValue(sscore, forKey: "sscore")
+        scoreDefault.synchronize()
+        print("Scorespeed \(sscore)")
+    }
+
+    
+
  }
