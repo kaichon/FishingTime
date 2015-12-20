@@ -189,7 +189,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     }
     
     func setupGame()  {
-        seconds = 120
+        seconds = 5
         timeOut.text = "\(seconds)" //แสดงค่าเริ่มต้น
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         
@@ -202,7 +202,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         if(seconds <= 0)  {
             timer.invalidate()
-            let Scene = ScoreLevel2(size: self.size)
+            let Scene = GameOver(size: self.size)
             let transition = SKTransition.fadeWithDuration(0)
             self.scene!.view?.presentScene(Scene, transition: transition)
 
