@@ -54,7 +54,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     var reduce1 = SKLabelNode(text: " - 10s ! ")
     
     var timeLevel2 = NSUserDefaults.standardUserDefaults()
-    var scoreTime2 = 0
+    var scoreTime2 = 120
     
 
 //    var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
@@ -355,48 +355,47 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     
     func hitFish_1(){
         
-        hitFish1.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitFish1.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
         hitFish1.size.width = 60
         hitFish1.size.height = 35
         hitFish1.zRotation = CGFloat(M_PI) * 1.5
         addChild(hitFish1)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitFish1.runAction(SKAction.sequence([aa,bb]))
+        
     }
     
     func hitFish_2(){
         
-        hitFish2.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitFish2.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
         hitFish2.size.width = 80
         hitFish2.size.height = 33
         hitFish2.zRotation = CGFloat(M_PI) * 1.5
         addChild(hitFish2)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitFish2.runAction(SKAction.sequence([aa,bb]))
     }
-    
     func hitShoe(){
-        hitShoes.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitShoes.position = CGPoint(x: frame.size.width * 0.5 , y: hook.position.y)
         hitShoes.size.width = 50
         hitShoes.size.height = 35
         //hitShoes.zRotation = CGFloat(M_PI) * 1.5
         addChild(hitShoes)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitShoes.runAction(SKAction.sequence([aa,bb]))
     }
     func hitCan(){
-        hitCans.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitCans.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
         hitCans.size.width = 35
         hitCans.size.height = 45
         addChild(hitCans)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitCans.runAction(SKAction.sequence([aa,bb]))
     }
-
 
     func  reduceTime() {
         reduce.position = CGPoint(x: frame.size.width * 0.1 , y: frame.size.height * 0.8)

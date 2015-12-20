@@ -52,7 +52,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     var reduce1 = SKLabelNode(text: " - 10s ! ")
     
     var timeLevel = NSUserDefaults.standardUserDefaults()
-    var scoreTime = 0
+    var scoreTime = 120
     /*
     override init() {
         //rope2 = Rope(
@@ -313,32 +313,32 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     
     func hitFish_1(){
         
-        hitFish1.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitFish1.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
         hitFish1.size.width = 60
         hitFish1.size.height = 35
         hitFish1.zRotation = CGFloat(M_PI) * 1.5
         addChild(hitFish1)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitFish1.runAction(SKAction.sequence([aa,bb]))
     }
     
-    func hitShoe(){
-        hitShoes.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+       func hitShoe(){
+        hitShoes.position = CGPoint(x: frame.size.width * 0.5 , y: hook.position.y)
         hitShoes.size.width = 50
         hitShoes.size.height = 35
         //hitShoes.zRotation = CGFloat(M_PI) * 1.5
         addChild(hitShoes)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitShoes.runAction(SKAction.sequence([aa,bb]))
     }
     func hitCan(){
-        hitCans.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitCans.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
         hitCans.size.width = 35
         hitCans.size.height = 45
         addChild(hitCans)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitCans.runAction(SKAction.sequence([aa,bb]))
     }

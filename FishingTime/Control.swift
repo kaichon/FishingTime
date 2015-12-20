@@ -16,7 +16,6 @@ class Control: SKNode{
         super.init()
         name = "Control\(self)"
         
-        hook.size = CGSize(width: 18,height: 18)
         addhook()
         
         let body = SKPhysicsBody(rectangleOfSize: hook.size)
@@ -36,7 +35,7 @@ class Control: SKNode{
     }
     
     private func addhook(){
-        hook.size = CGSize(width: 18,height: 18)
+        hook.size = CGSize(width: 15,height: 18)
         addChild(hook)
         
     }

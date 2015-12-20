@@ -219,6 +219,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             fish1.removeAllChildren()
             hookMoveUp()
             
+            
+            
             if status.soundStatus == 0 {
             runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
@@ -233,6 +235,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             hitFish_2()
             fish2.removeAllChildren()
             hookMoveUp()
+            
+            
             if status.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
@@ -264,43 +268,45 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     
     func hitFish_1(){
         
-        hitFish1.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitFish1.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
         hitFish1.size.width = 60
         hitFish1.size.height = 35
         hitFish1.zRotation = CGFloat(M_PI) * 1.5
         addChild(hitFish1)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitFish1.runAction(SKAction.sequence([aa,bb]))
+        numPoints += 1
     }
     
     func hitFish_2(){
         
-        hitFish2.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitFish2.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
         hitFish2.size.width = 80
         hitFish2.size.height = 33
         hitFish2.zRotation = CGFloat(M_PI) * 1.5
         addChild(hitFish2)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitFish2.runAction(SKAction.sequence([aa,bb]))
+        
     }
     func hitShoe(){
-        hitShoes.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitShoes.position = CGPoint(x: frame.size.width * 0.5 , y: hook.position.y)
         hitShoes.size.width = 50
         hitShoes.size.height = 35
         //hitShoes.zRotation = CGFloat(M_PI) * 1.5
         addChild(hitShoes)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitShoes.runAction(SKAction.sequence([aa,bb]))
     }
     func hitCan(){
-        hitCans.position = CGPoint(x: frame.size.width * 0.52 , y: frame.size.height * 0.15)
+        hitCans.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
         hitCans.size.width = 35
         hitCans.size.height = 45
         addChild(hitCans)
-        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.5))
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitCans.runAction(SKAction.sequence([aa,bb]))
     }
