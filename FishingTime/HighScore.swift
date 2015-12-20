@@ -26,8 +26,10 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
     let btnclose2 = SKSpriteNode(imageNamed: "Close2")
     let bghighScore = SKSpriteNode(imageNamed: "bgHighScore")
     var textscoreSpeed = SKLabelNode(text: "0")
-    var textspeed = 0
+    var scorespeed = 0
+    var highscorespeed = 0
     let scoreDefault = NSUserDefaults.standardUserDefaults()
+    let highScoreSpeedDefault = NSUserDefaults.standardUserDefaults()
     
     override func didMoveToView(view: SKView) {
         
@@ -50,11 +52,11 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
         btnclose2.size.width = size.width / 15.5
         btnclose2.size.height = size.height / 9.5
         
-        textscoreSpeed.position = CGPoint(x: frame.size.width * 0.67, y: frame.size.height * 0.5)
+        textscoreSpeed.position = CGPoint(x: frame.size.width * 0.67, y: frame.size.height * 0.45)
         textscoreSpeed.fontColor = UIColor.redColor()
-        textscoreSpeed.fontSize = 25
+        textscoreSpeed.fontSize = 35
         textscoreSpeed.fontName = "Courier"
-        addChild(textscoreSpeed)
+
         
         
         let soundDefault = NSUserDefaults.standardUserDefaults()
@@ -77,16 +79,25 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
             
         }
         
-        textspeed = score.sscore
-        print(textspeed)
-        textscoreSpeed.text = "\(textspeed)"
-        addChild(textscoreSpeed)
+        if (highScoreSpeedDefault.valueForKey("highscorespeed") != nil){
+            highscorespeed = highScoreSpeedDefault.valueForKey("highscorespeed") as! Int!
+            print("HighScoreSpeed\(highscorespeed)")
+            
+        }
+
+        scorespeed = score.sscore
         
-//        if(textspeed >= score.sscore){
-//            textscoreSpeed.text = "\(textspeed)"
-//            addChild(textscoreSpeed)
-//            scoreSpeed()
-//        }
+        
+        if(scorespeed >=  highscorespeed){
+            highscorespeed = scorespeed
+            scoreSpeed()
+            textscoreSpeed.text = "\(highscorespeed)"
+            addChild(textscoreSpeed)
+            
+        }else{
+            textscoreSpeed.text = "\(highscorespeed)"
+            addChild(textscoreSpeed)
+        }
         
         
 
@@ -129,11 +140,11 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
         
     }
     
-//    func scoreSpeed(){  //การ save ค่า (การจดจำค่า)
-//        scoreDefault.setValue(textspeed, forKey: "textspeed")
-//        scoreDefault.synchronize()
-//        print("Scorespeed \(textspeed)")
-//    }
+    func scoreSpeed(){  //การ save ค่า (การจดจำค่า)
+        highScoreSpeedDefault.setValue(highscorespeed, forKey: "highscorespeed")
+        highScoreSpeedDefault.synchronize()
+        print("HighSpeedsave \(highscorespeed)")
+    }
 
     
     

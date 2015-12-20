@@ -45,6 +45,7 @@ class ScoreSpeed: SKScene , SKPhysicsContactDelegate{
         textscore1.fontSize = 50
         textscore1.fontName = "Courier"
         
+        
         let scoreDefault = NSUserDefaults.standardUserDefaults()
         if (scoreDefault.valueForKey("sscore") != nil){
             score.sscore = scoreDefault.valueForKey("sscore") as! Int!

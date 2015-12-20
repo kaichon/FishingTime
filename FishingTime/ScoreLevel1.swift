@@ -15,9 +15,14 @@ import AVFoundation
 @available(iOS 9.0, *)
 class ScoreLevel1: SKScene , SKPhysicsContactDelegate{
     
+    let score = LevelOne()
+    
     let bgscore = SKSpriteNode(imageNamed: "bgscore")
     let ok = SKSpriteNode(imageNamed: "ok")
     let ok2 = SKSpriteNode(imageNamed: "ok2")
+    
+    var textTime = SKLabelNode(text: "0")
+    var time = 0
     
     override func didMoveToView(view: SKView)  {
         
@@ -36,6 +41,22 @@ class ScoreLevel1: SKScene , SKPhysicsContactDelegate{
         ok2.size.height = size.height / 7.5
         
         
+        textTime.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.45)
+        textTime.fontColor = UIColor.redColor()
+        textTime.fontSize = 50
+        textTime.fontName = "Courier"
+        
+        let timeDefault = NSUserDefaults.standardUserDefaults()
+        if (timeDefault.valueForKey("scoreTime") != nil){
+            score.scoreTime = timeDefault.valueForKey("scoreTime") as! Int!
+            print("scoreTime\(score.scoreTime)")
+            
+        }
+        
+        time = score.scoreTime
+        textTime.text = "\(time)"
+        addChild(textTime)
+
     }
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch: AnyObject in touches {

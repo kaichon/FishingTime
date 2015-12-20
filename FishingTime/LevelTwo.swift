@@ -30,6 +30,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     var points2 = SKLabelNode(text: "0")
     var numPoints1 = 0
     var numPoints2 = 0
+    var enemy = 0
     
     let fullscore = SKLabelNode(text: "/3")
     let fullscore2 = SKLabelNode(text: "/2")
@@ -51,6 +52,9 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
 
     var reduce = SKLabelNode(text: " - 10s ! ")
     var reduce1 = SKLabelNode(text: " - 10s ! ")
+    
+    var timeLevel2 = NSUserDefaults.standardUserDefaults()
+    var scoreTime2 = 0
     
 
 //    var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
@@ -174,6 +178,11 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
             
+        }
+
+        if (timeLevel2.valueForKey("scoreTime2") != nil){
+            scoreTime2 = timeLevel2.valueForKey("scoreTime2") as! Int!
+            print("ScoreTime ",     "\(scoreTime2)")
         }
 
         
@@ -305,6 +314,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == ShoesCategory){
             print("Shoes")
+            enemy += 10
             seconds -= 10
             shoes.removeAllChildren()
             hookMoveUp()
@@ -315,6 +325,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask == CansCategory){
             print("Can")
+            enemy += 10
             seconds -= 10
             cans.removeAllChildren()
             hookMoveUp()
@@ -327,6 +338,13 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     
     override func update(currentTime: NSTimeInterval) {
         if((numPoints1 == 3) && (numPoints2 == 2)){
+            var ss = 0
+            ss = 120 - seconds
+            ss -= enemy
+            print("time  ",ss)
+            scoreTime2 = ss
+            scoreTime1()
+
             let Scene = ScoreLevel2(size: self.size)
             let transition = SKTransition.fadeWithDuration(2)
             self.scene!.view?.presentScene(Scene, transition: transition)
@@ -406,5 +424,11 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
     }
     
+    func scoreTime1(){  //การ save ค่า (การจดจำค่า)
+        timeLevel2.setValue(scoreTime2, forKey: "scoreTime2")
+        timeLevel2.synchronize()
+        print("ScoreLevel \(scoreTime2)")
+    }
+
     
 }

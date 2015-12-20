@@ -32,6 +32,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     var points = SKLabelNode(text: "0")
     let fullscore = SKLabelNode(text: "/3")
     var numPoints = 0
+    var enemy = 0
     
     let bg = SKSpriteNode(imageNamed: "BGLavel1")
     let btnclose = SKSpriteNode(imageNamed: "Close")
@@ -49,6 +50,9 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     
     var reduce = SKLabelNode(text: " - 10s ! ")
     var reduce1 = SKLabelNode(text: " - 10s ! ")
+    
+    var timeLevel = NSUserDefaults.standardUserDefaults()
+    var scoreTime = 0
     /*
     override init() {
         //rope2 = Rope(
@@ -156,6 +160,11 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
             addChild(backgroundMusic)
         }
 
+        if (timeLevel.valueForKey("scoreTime") != nil){
+            scoreTime = timeLevel.valueForKey("scoreTime") as! Int!
+            print("ScoreTime ",     "\(scoreTime)")
+        }
+
         
     }
     
@@ -256,8 +265,12 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
                 if(numPoints == 3 ){
                     points.fontColor = UIColor.redColor()
                     addChild(agree)
-                    print("time ", 120 - seconds)
-                    
+                    var ss = 0
+                    ss = 120 - seconds
+                    ss -= enemy
+                    print("time ",ss)
+                    scoreTime = ss
+                    scoreTime1()
                         let Scene = ScoreLevel1(size: self.size)
                         let transition = SKTransition.fadeWithDuration(2)
                         self.scene!.view?.presentScene(Scene, transition: transition)
@@ -270,6 +283,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==ShoesCategory){
             print("Shoes")
+            enemy += 10
             seconds -= 10
             reduceTime()
             shoes.removeAllChildren()
@@ -281,6 +295,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         
         if(a.categoryBitMask == HookCategory && b.categoryBitMask==CansCategory){
             print("Can")
+            enemy += 10
             seconds -= 10
             reduceTime1()
             cans.removeAllChildren()
@@ -292,6 +307,9 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         
     }
 
+    override func update(currentTime: NSTimeInterval) {
+      
+    }
     
     func hitFish_1(){
         
@@ -349,6 +367,12 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         let bb = SKAction.removeFromParent()
         reduce1.runAction(SKAction.sequence([aa,bb]))
         
+    }
+    
+    func scoreTime1(){  //การ save ค่า (การจดจำค่า)
+        timeLevel.setValue(scoreTime, forKey: "scoreTime")
+        timeLevel.synchronize()
+        print("ScoreLevel \(scoreTime)")
     }
 
 

@@ -137,7 +137,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         }
         
         if (scoreDefault.valueForKey("sscore") != nil){
-            sscore = soundDefault.valueForKey("sscore") as! Int!
+            sscore = scoreDefault.valueForKey("sscore") as! Int!
             print("scoreMain\(sscore)")
         }
 
@@ -145,7 +145,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     //-------------------------------------------------------------
     
     func setupGame()  {
-        seconds = 20
+        seconds = 50
         timeOut.text = "\(seconds)" //แสดงค่าเริ่มต้น
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         
