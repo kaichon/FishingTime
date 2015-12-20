@@ -40,7 +40,7 @@ class ScoreSpeed: SKScene , SKPhysicsContactDelegate{
         ok2.size.width = size.width / 4
         ok2.size.height = size.height / 7.5
         
-        textscore1.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.5)
+        textscore1.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.45)
         textscore1.fontColor = UIColor.redColor()
         textscore1.fontSize = 50
         textscore1.fontName = "Courier"

@@ -7,19 +7,27 @@
 //
 
 
+//import Foundation
+//import SpriteKit
+//import UIKit
+
 import Foundation
 import SpriteKit
 import UIKit
+import AVFoundation
 
 @available(iOS 9.0, *)
-class HighScore: SKScene {
+class HighScore: SKScene , SKPhysicsContactDelegate{
     
     var status = Setting()
+     let score = Speed()
     
     let btnclose = SKSpriteNode(imageNamed: "Close")
     let btnclose2 = SKSpriteNode(imageNamed: "Close2")
     let bghighScore = SKSpriteNode(imageNamed: "bgHighScore")
     var textscoreSpeed = SKLabelNode(text: "0")
+    var textspeed = 0
+    let scoreDefault = NSUserDefaults.standardUserDefaults()
     
     override func didMoveToView(view: SKView) {
         
@@ -63,6 +71,25 @@ class HighScore: SKScene {
         }
 
         
+        if (scoreDefault.valueForKey("sscore") != nil){
+            score.sscore = scoreDefault.valueForKey("sscore") as! Int!
+            print("scoreMain\(score.sscore)")
+            
+        }
+        
+        textspeed = score.sscore
+        print(textspeed)
+        textscoreSpeed.text = "\(textspeed)"
+        addChild(textscoreSpeed)
+        
+//        if(textspeed >= score.sscore){
+//            textscoreSpeed.text = "\(textspeed)"
+//            addChild(textscoreSpeed)
+//            scoreSpeed()
+//        }
+        
+        
+
         
     }
     
@@ -102,6 +129,12 @@ class HighScore: SKScene {
         
     }
     
+//    func scoreSpeed(){  //การ save ค่า (การจดจำค่า)
+//        scoreDefault.setValue(textspeed, forKey: "textspeed")
+//        scoreDefault.synchronize()
+//        print("Scorespeed \(textspeed)")
+//    }
+
     
     
 }

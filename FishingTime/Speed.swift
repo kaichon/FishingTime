@@ -145,7 +145,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     //-------------------------------------------------------------
     
     func setupGame()  {
-        seconds = 120
+        seconds = 20
         timeOut.text = "\(seconds)" //แสดงค่าเริ่มต้น
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         
