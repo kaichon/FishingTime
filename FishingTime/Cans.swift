@@ -16,7 +16,7 @@ class Cans : SKNode {
 
     override init() {
         super.init()
-        name = "Enemy\(self)"
+        name = "Cans\(self)"
         
               //addcanned
         runAction(SKAction.repeatActionForever(

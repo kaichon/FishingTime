@@ -20,6 +20,9 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     private var cans = Cans()
     private var hook = Control()
     
+    
+    private var shoesLeft = ShoesLeft()
+
     var timeOut = SKLabelNode(text: "0")
     var seconds = 0
     var timer = NSTimer()
@@ -115,6 +118,10 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
         cans.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
         addChild(cans)
+        
+        shoesLeft.position=CGPoint(x: frame.size.width * 0 , y: frame.size.height * 0.1)
+        addChild(shoesLeft)
+
         
         pp.position = CGPointMake(self.size.width * 0.52, self.size.height * 0.99)
         pp.size.width = size.width / 4
@@ -215,11 +222,9 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             print("Fish1")
             numPoints += 1
             points.text = "\(numPoints)"
-            hitFish_1()
             fish1.removeAllChildren()
+            hitFish_1()
             hookMoveUp()
-            
-            
             
             if status.soundStatus == 0 {
             runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
@@ -235,7 +240,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             hitFish_2()
             fish2.removeAllChildren()
             hookMoveUp()
-            
+           
             
             if status.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
@@ -276,7 +281,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitFish1.runAction(SKAction.sequence([aa,bb]))
-        numPoints += 1
+        
     }
     
     func hitFish_2(){
@@ -295,7 +300,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         hitShoes.position = CGPoint(x: frame.size.width * 0.5 , y: hook.position.y)
         hitShoes.size.width = 50
         hitShoes.size.height = 35
-        //hitShoes.zRotation = CGFloat(M_PI) * 1.5
+        
         addChild(hitShoes)
         let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()

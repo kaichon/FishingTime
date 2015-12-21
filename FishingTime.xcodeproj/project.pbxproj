@@ -50,6 +50,7 @@
 		FD5CA6C11B0A94C900EEC868 /* chon.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FD5CA6C01B0A94C900EEC868 /* chon.atlas */; };
 		FD5CA6C31B0A94D400EEC868 /* fish.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FD5CA6C21B0A94D400EEC868 /* fish.atlas */; };
 		FD8069461C1C377B00DF39FC /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FD8069451C1C377B00DF39FC /* background.mp3 */; };
+		FD9955161C27FA0800BA343A /* ShoesLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9955151C27FA0800BA343A /* ShoesLeft.swift */; };
 		FDCEA27C1C272DCC00E7E7EC /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCEA27B1C272DCC00E7E7EC /* GameOver.swift */; };
 		FDD93F4F1C233BC900100C46 /* soundHome.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FDD93F4E1C233BC900100C46 /* soundHome.mp3 */; };
 		FDD93F511C233EA700100C46 /* click.WAV in Resources */ = {isa = PBXBuildFile; fileRef = FDD93F501C233EA700100C46 /* click.WAV */; };
@@ -118,6 +119,7 @@
 		FD5CA6C01B0A94C900EEC868 /* chon.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = chon.atlas; sourceTree = "<group>"; };
 		FD5CA6C21B0A94D400EEC868 /* fish.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fish.atlas; sourceTree = "<group>"; };
 		FD8069451C1C377B00DF39FC /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = SOURCE_ROOT; };
+		FD9955151C27FA0800BA343A /* ShoesLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoesLeft.swift; sourceTree = "<group>"; };
 		FDCEA27B1C272DCC00E7E7EC /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		FDD93F4E1C233BC900100C46 /* soundHome.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = soundHome.mp3; sourceTree = "<group>"; };
 		FDD93F501C233EA700100C46 /* click.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.WAV; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				DEC1E9FE1BF27EF1002D6594 /* Fiah2.swift */,
 				DEC1EA001BF287E8002D6594 /* Shoes.swift */,
 				DEC1EA041BF29042002D6594 /* Cans.swift */,
+				FD9955151C27FA0800BA343A /* ShoesLeft.swift */,
 				FD5CA6571B0A3A5D00EEC868 /* GameScene.swift */,
 				FD5CA6A41B0A6D9900EEC868 /* Play.swift */,
 				FD5CA6A81B0A6E7300EEC868 /* Setting.swift */,
@@ -406,6 +409,7 @@
 				DED7DFB91B0CCFD000430C20 /* LevelOne.swift in Sources */,
 				DEC1EA011BF287E8002D6594 /* Shoes.swift in Sources */,
 				FD5CA65A1B0A3A5D00EEC868 /* GameViewController.swift in Sources */,
+				FD9955161C27FA0800BA343A /* ShoesLeft.swift in Sources */,
 				DED7DFBB1B0CCFE500430C20 /* LevelTwo.swift in Sources */,
 				DEC1E9FD1BF27453002D6594 /* Fish1.swift in Sources */,
 				FD5CA6541B0A3A5D00EEC868 /* AppDelegate.swift in Sources */,

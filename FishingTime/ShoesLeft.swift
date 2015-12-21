@@ -8,32 +8,31 @@
 
 import SpriteKit
 
-class Shoes : SKNode {
-
+class ShoesLeft : SKNode {
+    
     var shoe :SKSpriteNode!
     var shoeShoot : [SKTexture]!
     
     
     override init() {
         super.init()
-        name = "Shoes\(self)"
         
-
+        
         //addshoe
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addshoe),
-                SKAction.waitForDuration(10) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
+                SKAction.waitForDuration(8) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
                 ])
             ))
         
         
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func random() -> CGFloat {
         return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
     }
@@ -41,7 +40,7 @@ class Shoes : SKNode {
     func random(min min: CGFloat, max: CGFloat) -> CGFloat {
         return random() * (max - min) + min
     }
-
+    
     
     func addshoe(){
         
@@ -71,20 +70,20 @@ class Shoes : SKNode {
         shoe.position = CGPoint(x: frame.size.width + shoe.size.width/2, y: shoe.size.height * random(min: -0.2, max: 2.2))
         addChild(shoe)
         
-        let moveshoe = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 6, max: 8))))
+        let moveshoe = (SKAction.moveByX(600, y: 0.0,duration: NSTimeInterval(random(min: 6, max: 8))))
         let removeshoe = (SKAction.removeFromParent())
         
         shoe.runAction(SKAction.sequence([moveshoe, removeshoe]))
         
-//        
+        //
         shoe.physicsBody = SKPhysicsBody(rectangleOfSize: shoe.self.size)
         shoe.physicsBody?.dynamic = true
         shoe.physicsBody?.affectedByGravity = false
         shoe.physicsBody?.allowsRotation = false
         shoe.physicsBody?.categoryBitMask = ShoesCategory
-        shoe.physicsBody?.contactTestBitMask = ShoesCategory 
+        shoe.physicsBody?.contactTestBitMask = ShoesCategory
         shoe.physicsBody?.collisionBitMask = 0
     }
-
-
+    
+    
 }
