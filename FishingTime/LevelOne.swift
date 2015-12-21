@@ -169,7 +169,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     }
     
     func setupGame()  {
-        seconds = 5
+        seconds = 120
         timeOut.text = "\(seconds)" //แสดงค่าเริ่มต้น
         timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("subtractTime"), userInfo: nil, repeats: true)
         

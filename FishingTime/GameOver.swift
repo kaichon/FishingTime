@@ -73,6 +73,7 @@ class GameOver : SKScene , SKPhysicsContactDelegate{
             let location = touch.locationInNode(self)
             if ok2.containsPoint(location){
                 
+               
                 let playScene = LevelOne(size: self.size)
                 let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(playScene, transition: transition)

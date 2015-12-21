@@ -132,17 +132,21 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             
             let location = touch.locationInNode(self)
             
+            
+            
             if btnStart.containsPoint(location){
                 let playScene = Play(size: self.size)
-                let transition = SKTransition.fadeWithDuration(0.2)
+                let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(playScene, transition: transition)
                
             }else if btnSetting.containsPoint(location){
+                
                 let playScene = Setting(size: self.size)
                 let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(playScene, transition: transition)
                 
             }else if btnHighScore.containsPoint(location){
+                
                 let playScene = HighScore(size: self.size)
                 let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(playScene, transition: transition)
