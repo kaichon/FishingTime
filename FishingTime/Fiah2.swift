@@ -92,7 +92,7 @@ class Fish2 : SKNode {
         
         //let chonn = SKAction.moveTo(CGPoint(x: -chon.size.width*15, y: actualY), duration: NSTimeInterval(random(min: 4, max: 5)))
         
-        let movefish = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 5, max: 6))))
+        let movefish = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 3, max: 4))))
         let removefish = (SKAction.removeFromParent())
         
         chon.runAction(SKAction.sequence([movefish, removefish]))

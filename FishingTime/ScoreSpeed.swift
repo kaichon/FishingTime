@@ -20,6 +20,8 @@ class ScoreSpeed: SKScene , SKPhysicsContactDelegate{
     let bgscore = SKSpriteNode(imageNamed: "bgscore")
     let ok = SKSpriteNode(imageNamed: "ok")
     let ok2 = SKSpriteNode(imageNamed: "ok2")
+    var text1 = SKLabelNode(text: "จำนวนปลา")
+    var text2 = SKLabelNode(text: "ตัว")
     var textscore1 = SKLabelNode(text: "0")
     var score1 = 0
     
@@ -39,6 +41,19 @@ class ScoreSpeed: SKScene , SKPhysicsContactDelegate{
         ok2.position = CGPointMake(self.size.width * 0.5 , self.size.height * 0.25)
         ok2.size.width = size.width / 4
         ok2.size.height = size.height / 7.5
+        
+        text1.position = CGPoint(x: frame.size.width * 0.3, y: frame.size.height * 0.45)
+        text1.fontColor = UIColor.blackColor()
+        text1.fontSize = 40
+        text1.fontName = "Courier"
+        addChild(text1)
+        
+        text2.position = CGPoint(x: frame.size.width * 0.65, y: frame.size.height * 0.45)
+        text2.fontColor = UIColor.blackColor()
+        text2.fontSize = 40
+        text2.fontName = "Courier"
+        addChild(text2)
+
         
         textscore1.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.45)
         textscore1.fontColor = UIColor.redColor()
