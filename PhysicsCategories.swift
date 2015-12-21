@@ -14,3 +14,5 @@ import Foundation
     let ShoesCategory: UInt32 = 1 << 4      //16
     let CansCategory: UInt32 = 1 << 5       //32
 
+    let Fish1LeftCategory: UInt32 = 1 << 6     //64
+    let Fish2LeftCategory: UInt32 = 1 << 7     //128

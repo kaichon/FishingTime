@@ -11,7 +11,7 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-class Fish1 : SKNode {
+class Fish1Left : SKNode {
     
     private var fish : SKSpriteNode!
     var fishShoot : [SKTexture]!
@@ -20,25 +20,25 @@ class Fish1 : SKNode {
     
     override init() {
         super.init()
-        name = "Fish1\(self)"
+       // name = "Fish1\(self)"
         
         
         //addFish
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addFish),
-                SKAction.waitForDuration(5) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
+                SKAction.waitForDuration(8) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
                 ])
             ))
         
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-   
-   
+    
+    
     
     func random() -> CGFloat {
         return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
@@ -52,13 +52,13 @@ class Fish1 : SKNode {
     
     func addFish(){
         
-        let fishAnimatedAtlas : SKTextureAtlas = SKTextureAtlas(named: "fish")
+        let fishAnimatedAtlas : SKTextureAtlas = SKTextureAtlas(named: "fish1left")
         var runningFrames = [SKTexture]()
         let numImages : Int = fishAnimatedAtlas.textureNames.count
         
         for var i=1; i<=numImages; i++ {
             let fishTextureName = "fish\(i)"
-//            print(fishTextureName)
+            //            print(fishTextureName)
             runningFrames.append(fishAnimatedAtlas.textureNamed(fishTextureName))
         }
         
@@ -74,13 +74,13 @@ class Fish1 : SKNode {
         
         
         //position
-        fish.position = CGPoint(x: 50, y: fish.size.height * random(min: -0.2, max: 2.0))
+        fish.position = CGPoint(x: frame.size.width + fish.size.width/2, y: fish.size.height * random(min: -0.2, max: 2.0))
         addChild(fish)
         
-        let movefish = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 6, max: 8))))
+        let movefish = (SKAction.moveByX(800, y: 0.0,duration: NSTimeInterval(random(min: 8, max: 10))))
         let removefish = (SKAction.removeFromParent())
-       
-       
+        
+        
         fish.runAction(SKAction.sequence([movefish, removefish]))
         
         
@@ -89,14 +89,14 @@ class Fish1 : SKNode {
         fish.physicsBody?.dynamic = true
         fish.physicsBody?.affectedByGravity = false
         fish.physicsBody?.allowsRotation = false
-        fish.physicsBody?.categoryBitMask = Fish1Category
+        fish.physicsBody?.categoryBitMask = Fish1LeftCategory
         fish.physicsBody?.contactTestBitMask = HookCategory
         fish.physicsBody?.collisionBitMask = 0
         
         
         
         
-      
+        
         
     }
     

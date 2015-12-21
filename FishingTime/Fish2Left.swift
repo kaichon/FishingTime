@@ -11,12 +11,12 @@ import GameplayKit
 
 
 
-class Fish2 : SKNode {
-
+class Fish2Left : SKNode {
+    
     var chon : SKSpriteNode!
     var chonShoot : [SKTexture]!
-
-
+    
+    
     
     override init() {
         super.init()
@@ -27,15 +27,15 @@ class Fish2 : SKNode {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addChon),
-                SKAction.waitForDuration(9) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
+                SKAction.waitForDuration(11) // เวลาในการสุ่มปลาออกมา...หน่วยเป็นวินาที
                 ])
             ))
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     
     func random() -> CGFloat {
         return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
@@ -45,10 +45,10 @@ class Fish2 : SKNode {
         return random() * (max - min) + min
     }
     
-
+    
     func addChon() {
         //การสร้างมอนส์เตอร์(ชื่อไฟล์รูปภาพ)มาเก็บไว้ในตัวแปร
-        let chonAnimatedAtlas : SKTextureAtlas = SKTextureAtlas(named: "chon")
+        let chonAnimatedAtlas : SKTextureAtlas = SKTextureAtlas(named: "fish2left")
         var runningFrames = [SKTexture]()
         let numImages : Int = chonAnimatedAtlas.textureNames.count
         
@@ -74,30 +74,21 @@ class Fish2 : SKNode {
         chon.physicsBody?.dynamic = true // 2
         chon.physicsBody?.affectedByGravity = false
         chon.physicsBody?.allowsRotation = false
-        chon.physicsBody?.categoryBitMask = Fish2Category // 3
-        chon.physicsBody?.contactTestBitMask = Fish2Category 
-        chon.physicsBody?.collisionBitMask = 0 
+        chon.physicsBody?.categoryBitMask = Fish2LeftCategory // 3
+        chon.physicsBody?.contactTestBitMask = HookCategory
+        chon.physicsBody?.collisionBitMask = 0
         
-         let actualY = chon.size.height * random(min:  -0.2 , max: 2.2)
+        let actualY = chon.size.height * random(min:  -0.2 , max: 2.2)
         
         chon.position = CGPoint(x: frame.size.width + chon.size.width/2, y:  actualY)
         addChild(chon)
         
-        
-        //let chonn = SKAction.moveByX(-500, y: 0.0,duration: NSTimeInterval(random(min: 4, max: 5)))
-
-        
-        //chon.runAction(SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 4, max: 5))))
-        
-        
-        //let chonn = SKAction.moveTo(CGPoint(x: -chon.size.width*15, y: actualY), duration: NSTimeInterval(random(min: 4, max: 5)))
-        
-        let movefish = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 5, max: 6))))
+        let movefish = (SKAction.moveByX(800, y: 0.0,duration: NSTimeInterval(random(min: 5, max: 6))))
         let removefish = (SKAction.removeFromParent())
         
         chon.runAction(SKAction.sequence([movefish, removefish]))
     }
-
+    
     
     
 }

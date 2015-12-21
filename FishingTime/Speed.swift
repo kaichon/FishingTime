@@ -21,7 +21,8 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     private var hook = Control()
     
     
-    private var shoesLeft = ShoesLeft()
+    private var fish1Left = Fish1Left()
+    private var fish2Left = Fish2Left()
 
     var timeOut = SKLabelNode(text: "0")
     var seconds = 0
@@ -42,6 +43,9 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     let hitFish2 = SKSpriteNode(imageNamed: "chon")
     let hitShoes = SKSpriteNode(imageNamed: "shoe")
     let hitCans = SKSpriteNode(imageNamed: "can")
+    
+    let hitFish1Left = SKSpriteNode(imageNamed: "fishLeft")
+    let hitFish2Left = SKSpriteNode(imageNamed: "chonLeft")
 
     
     var reduce = SKLabelNode(text: " - 10s ! ")
@@ -118,10 +122,13 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
         cans.position=CGPoint(x: frame.size.width * 1 , y: frame.size.height * 0.1)
         addChild(cans)
-        
-        shoesLeft.position=CGPoint(x: frame.size.width * 0 , y: frame.size.height * 0.1)
-        addChild(shoesLeft)
 
+        fish1Left.position=CGPoint(x: frame.size.width * -0.1 , y: frame.size.height * 0.1)
+        addChild(fish1Left)
+
+        fish2Left.position=CGPoint(x: frame.size.width * -0.1 , y: frame.size.height * 0.1)
+        addChild(fish2Left)
+        
         
         pp.position = CGPointMake(self.size.width * 0.52, self.size.height * 0.99)
         pp.size.width = size.width / 4
@@ -268,6 +275,35 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         }
 
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish1LeftCategory){
+            print("Fish2")
+            numPoints += 1
+            points.text = "\(numPoints)"
+            fish1Left.removeAllChildren()
+            hitFish_1Left()
+            hookMoveUp()
+            
+            
+            if status.soundStatus == 0 {
+                runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
+            }
+        }
+
+        
+        if(a.categoryBitMask == HookCategory && b.categoryBitMask==Fish2LeftCategory){
+            print("Fish2")
+            numPoints += 1
+            points.text = "\(numPoints)"
+            fish2Left.removeAllChildren()
+            hitFish_2Left()
+            hookMoveUp()
+            
+
+            if status.soundStatus == 0 {
+                runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
+            }
+        }
+
         
     }
     
@@ -314,6 +350,32 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
         hitCans.runAction(SKAction.sequence([aa,bb]))
+    }
+
+    func hitFish_1Left(){
+        
+        hitFish1Left.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
+        hitFish1Left.size.width = 60
+        hitFish1Left.size.height = 35
+        hitFish1Left.zRotation = CGFloat(M_PI) / 2
+        addChild(hitFish1Left)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
+        let bb = SKAction.removeFromParent()
+        hitFish1Left.runAction(SKAction.sequence([aa,bb]))
+        
+    }
+    
+    func hitFish_2Left(){
+        
+        hitFish2Left.position = CGPoint(x: frame.size.width * 0.52 , y: hook.position.y)
+        hitFish2Left.size.width = 80
+        hitFish2Left.size.height = 33
+        hitFish2Left.zRotation = CGFloat(M_PI) / 2
+        addChild(hitFish2Left)
+        let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
+        let bb = SKAction.removeFromParent()
+        hitFish2Left.runAction(SKAction.sequence([aa,bb]))
+        
     }
 
     

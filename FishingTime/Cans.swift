@@ -62,7 +62,7 @@ class Cans : SKNode {
         
         
         //position
-        canned.position = CGPoint(x: 100, y: canned.size.height * random(min: -0.2, max: 2))
+        canned.position = CGPoint(x: 100, y: canned.size.height * random(min: 2, max: 2.3))
         addChild(canned)
         
         let movecanned = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 7, max: 9))))

@@ -68,7 +68,7 @@ class Shoes : SKNode {
         
         
         //position
-        shoe.position = CGPoint(x: frame.size.width + shoe.size.width/2, y: shoe.size.height * random(min: -0.2, max: 2.2))
+        shoe.position = CGPoint(x: 80, y: shoe.size.height * random(min: 2.0, max: 2.3))
         addChild(shoe)
         
         let moveshoe = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 6, max: 8))))

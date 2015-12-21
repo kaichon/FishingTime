@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DE575E1C1BE374D70035CE47 /* PhysicsCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE575E1B1BE374D70035CE47 /* PhysicsCategories.swift */; };
+		DEAD1E901C2807120002221F /* fish1left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DEAD1E8F1C2807120002221F /* fish1left.atlas */; };
+		DEAD1E921C2808600002221F /* fish2left.atlas in Resources */ = {isa = PBXBuildFile; fileRef = DEAD1E911C2808600002221F /* fish2left.atlas */; };
+		DEAD1E941C28087E0002221F /* Fish2Left.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD1E931C28087D0002221F /* Fish2Left.swift */; };
 		DEB00B421B0B2E9600E0169A /* Close.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB00B2E1B0B2E9600E0169A /* Close.png */; };
 		DEB00B431B0B2E9600E0169A /* Close2.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB00B2F1B0B2E9600E0169A /* Close2.png */; };
 		DEB00B441B0B2E9600E0169A /* HighScore.png in Resources */ = {isa = PBXBuildFile; fileRef = DEB00B301B0B2E9600E0169A /* HighScore.png */; };
@@ -50,7 +53,7 @@
 		FD5CA6C11B0A94C900EEC868 /* chon.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FD5CA6C01B0A94C900EEC868 /* chon.atlas */; };
 		FD5CA6C31B0A94D400EEC868 /* fish.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FD5CA6C21B0A94D400EEC868 /* fish.atlas */; };
 		FD8069461C1C377B00DF39FC /* background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FD8069451C1C377B00DF39FC /* background.mp3 */; };
-		FD9955161C27FA0800BA343A /* ShoesLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9955151C27FA0800BA343A /* ShoesLeft.swift */; };
+		FD9955161C27FA0800BA343A /* Fish1Left.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9955151C27FA0800BA343A /* Fish1Left.swift */; };
 		FDCEA27C1C272DCC00E7E7EC /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCEA27B1C272DCC00E7E7EC /* GameOver.swift */; };
 		FDD93F4F1C233BC900100C46 /* soundHome.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FDD93F4E1C233BC900100C46 /* soundHome.mp3 */; };
 		FDD93F511C233EA700100C46 /* click.WAV in Resources */ = {isa = PBXBuildFile; fileRef = FDD93F501C233EA700100C46 /* click.WAV */; };
@@ -73,6 +76,9 @@
 
 /* Begin PBXFileReference section */
 		DE575E1B1BE374D70035CE47 /* PhysicsCategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategories.swift; sourceTree = "<group>"; };
+		DEAD1E8F1C2807120002221F /* fish1left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fish1left.atlas; sourceTree = "<group>"; };
+		DEAD1E911C2808600002221F /* fish2left.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fish2left.atlas; sourceTree = "<group>"; };
+		DEAD1E931C28087D0002221F /* Fish2Left.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fish2Left.swift; sourceTree = "<group>"; };
 		DEB00B2E1B0B2E9600E0169A /* Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close.png; sourceTree = "<group>"; };
 		DEB00B2F1B0B2E9600E0169A /* Close2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close2.png; sourceTree = "<group>"; };
 		DEB00B301B0B2E9600E0169A /* HighScore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HighScore.png; sourceTree = "<group>"; };
@@ -119,7 +125,7 @@
 		FD5CA6C01B0A94C900EEC868 /* chon.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = chon.atlas; sourceTree = "<group>"; };
 		FD5CA6C21B0A94D400EEC868 /* fish.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fish.atlas; sourceTree = "<group>"; };
 		FD8069451C1C377B00DF39FC /* background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = background.mp3; sourceTree = SOURCE_ROOT; };
-		FD9955151C27FA0800BA343A /* ShoesLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoesLeft.swift; sourceTree = "<group>"; };
+		FD9955151C27FA0800BA343A /* Fish1Left.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fish1Left.swift; sourceTree = "<group>"; };
 		FDCEA27B1C272DCC00E7E7EC /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		FDD93F4E1C233BC900100C46 /* soundHome.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = soundHome.mp3; sourceTree = "<group>"; };
 		FDD93F501C233EA700100C46 /* click.WAV */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.WAV; sourceTree = "<group>"; };
@@ -179,7 +185,8 @@
 				DEC1E9FE1BF27EF1002D6594 /* Fiah2.swift */,
 				DEC1EA001BF287E8002D6594 /* Shoes.swift */,
 				DEC1EA041BF29042002D6594 /* Cans.swift */,
-				FD9955151C27FA0800BA343A /* ShoesLeft.swift */,
+				FD9955151C27FA0800BA343A /* Fish1Left.swift */,
+				DEAD1E931C28087D0002221F /* Fish2Left.swift */,
 				FD5CA6571B0A3A5D00EEC868 /* GameScene.swift */,
 				FD5CA6A41B0A6D9900EEC868 /* Play.swift */,
 				FD5CA6A81B0A6E7300EEC868 /* Setting.swift */,
@@ -204,6 +211,8 @@
 		FD5CA6511B0A3A5D00EEC868 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DEAD1E911C2808600002221F /* fish2left.atlas */,
+				DEAD1E8F1C2807120002221F /* fish1left.atlas */,
 				FD5CA6C21B0A94D400EEC868 /* fish.atlas */,
 				DED7DFBE1B0CF77D00430C20 /* shoe.atlas */,
 				DEB00B5A1B0BA5B200E0169A /* canneds.atlas */,
@@ -356,6 +365,7 @@
 				DEB00B4C1B0B2E9600E0169A /* on.png in Resources */,
 				FD5CA6621B0A3A5D00EEC868 /* LaunchScreen.xib in Resources */,
 				FDF111221C25BC2800040FCC /* Images.xcassets in Resources */,
+				DEAD1E921C2808600002221F /* fish2left.atlas in Resources */,
 				DEB00B511B0B2E9600E0169A /* speed2.png in Resources */,
 				DEB00B471B0B2E9600E0169A /* level2.png in Resources */,
 				DEB00B491B0B2E9600E0169A /* off2.png in Resources */,
@@ -374,6 +384,7 @@
 				DEB00B431B0B2E9600E0169A /* Close2.png in Resources */,
 				FD5CA6561B0A3A5D00EEC868 /* GameScene.sks in Resources */,
 				DED7DFBF1B0CF77D00430C20 /* shoe.atlas in Resources */,
+				DEAD1E901C2807120002221F /* fish1left.atlas in Resources */,
 				DEB00B4E1B0B2E9600E0169A /* setting.png in Resources */,
 				DEB00B481B0B2E9600E0169A /* off.png in Resources */,
 				DEB00B4D1B0B2E9600E0169A /* on2.png in Resources */,
@@ -409,12 +420,13 @@
 				DED7DFB91B0CCFD000430C20 /* LevelOne.swift in Sources */,
 				DEC1EA011BF287E8002D6594 /* Shoes.swift in Sources */,
 				FD5CA65A1B0A3A5D00EEC868 /* GameViewController.swift in Sources */,
-				FD9955161C27FA0800BA343A /* ShoesLeft.swift in Sources */,
+				FD9955161C27FA0800BA343A /* Fish1Left.swift in Sources */,
 				DED7DFBB1B0CCFE500430C20 /* LevelTwo.swift in Sources */,
 				DEC1E9FD1BF27453002D6594 /* Fish1.swift in Sources */,
 				FD5CA6541B0A3A5D00EEC868 /* AppDelegate.swift in Sources */,
 				DE575E1C1BE374D70035CE47 /* PhysicsCategories.swift in Sources */,
 				FDE420F91C1CA78B009C81B2 /* Control.swift in Sources */,
+				DEAD1E941C28087E0002221F /* Fish2Left.swift in Sources */,
 				FD5CA6A51B0A6D9900EEC868 /* Play.swift in Sources */,
 				FDE420F71C1C8D42009C81B2 /* ScoreSpeed.swift in Sources */,
 				DEC1EA051BF29042002D6594 /* Cans.swift in Sources */,

@@ -14,10 +14,10 @@ import AVFoundation
 @available(iOS 9.0, *)
 class GameOver : SKScene , SKPhysicsContactDelegate{
     
-    let bgscore = SKSpriteNode(imageNamed: "bgscore")
+    let bgscore = SKSpriteNode(imageNamed: "bgGameOver")
     let ok = SKSpriteNode(imageNamed: "ok")
     let ok2 = SKSpriteNode(imageNamed: "ok2")
-    var text = SKLabelNode(text: "Game Over!! Start LevelOne...")
+    
     
     
     
@@ -37,12 +37,7 @@ class GameOver : SKScene , SKPhysicsContactDelegate{
         ok2.size.width = size.width / 4
         ok2.size.height = size.height / 7.5
         
-        text.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.45)
-        text.fontColor = UIColor.redColor()
-        text.fontSize = 25
-        text.fontName = "Courier"
-        addChild(text)
-        
+               
         
 }
     
