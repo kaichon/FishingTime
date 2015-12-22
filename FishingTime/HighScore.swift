@@ -65,24 +65,24 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
         btnclose2.size.width = size.width / 15.5
         btnclose2.size.height = size.height / 9.5
         
-        //textSpeed
-        textscoreSpeed.position = CGPoint(x: frame.size.width * 0.67, y: frame.size.height * 0.45)
-        textscoreSpeed.fontColor = UIColor.redColor()
-        textscoreSpeed.fontSize = 35
-        textscoreSpeed.fontName = "Courier"
         
         //textLevelone
-        textscoreLevelone.position = CGPoint(x: frame.size.width * 0.30, y: frame.size.height * 0.49)
+        textscoreLevelone.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.56)
         textscoreLevelone.fontColor = UIColor.redColor()
         textscoreLevelone.fontSize = 25
         textscoreLevelone.fontName = "Courier"
         
-        
         //textLeveltwo
-        textscoreLeveltwo.position = CGPoint(x: frame.size.width * 0.30, y: frame.size.height * 0.35)
+        textscoreLeveltwo.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.435)
         textscoreLeveltwo.fontColor = UIColor.redColor()
         textscoreLeveltwo.fontSize = 25
         textscoreLeveltwo.fontName = "Courier"
+        
+        //textSpeed
+        textscoreSpeed.position = CGPoint(x: frame.size.width * 0.5, y: frame.size.height * 0.3)
+        textscoreSpeed.fontColor = UIColor.redColor()
+        textscoreSpeed.fontSize = 25
+        textscoreSpeed.fontName = "Courier"
         
 
         

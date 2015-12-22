@@ -329,6 +329,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         addChild(hitFish2)
         let aa = (SKAction.moveToY(self.frame.size.height * 0.7, duration: 2.3))
         let bb = SKAction.removeFromParent()
+        
         hitFish2.runAction(SKAction.sequence([aa,bb]))
         
     }
