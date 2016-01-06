@@ -17,27 +17,24 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     var status = Setting()
     
-    
-    
-    let bgmanu = SKSpriteNode(imageNamed: "manu")
+    let bgmanu = SKSpriteNode(imageNamed: "manu") // เป็นโหนดที่ดึงรูปภาพมาเก็บไว้ในตัวแปร
     let btnStart = SKSpriteNode(imageNamed: "Start")
     let btnSetting = SKSpriteNode(imageNamed: "setting")
     let btnHighScore = SKSpriteNode(imageNamed: "HighScore")
-    
     let btnStart2 = SKSpriteNode(imageNamed: "Start2")
     let btnSetting2 = SKSpriteNode(imageNamed: "setting2")
     let btnHighScore2 = SKSpriteNode(imageNamed: "HighScore2")
 
-    override func didMoveToView(view: SKView) {
+    override func didMoveToView(view: SKView) {  //didMoveToView จะ func ที่ทำงานเลยเมื่อเปิดในหน้า Scene นี้
         
-        bgmanu.position = CGPointMake(size.width * 0.5, size.height/2)
-        bgmanu.size.width = frame.size.width
+        bgmanu.position = CGPointMake(size.width * 0.5, size.height/2) // กำหนดตำแหน่งให้กับรูปภาพ
+        bgmanu.size.width = frame.size.width  // กำหนดขนาดความกว้างให้เท่ากับหน้าจอ iPhone นั้นๆ
         bgmanu.size.height = frame.size.height
         addChild(bgmanu)
         
         
         //ButtonStart
-        btnStart.position = CGPointMake(frame.size.width * 0.7, frame.size.height * 0.75)
+        btnStart.position = CGPointMake(frame.size.width * 0.7, frame.size.height * 0.75) // 
         btnStart.size.width = size.width / 4
         btnStart.size.height = size.height / 5
         addChild(btnStart)

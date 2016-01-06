@@ -26,7 +26,6 @@ class Setting: SKScene {
     let soundDefault = NSUserDefaults.standardUserDefaults()
     
     let backgroundMusic = SKAudioNode(fileNamed: "soundHome.mp3")
-    
     let bgsetting = SKSpriteNode(imageNamed: "bgsetting")
     
     
@@ -99,14 +98,14 @@ class Setting: SKScene {
     }
     
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) { //เป็นฟังชั่นเมื่อกด
         for touch: AnyObject in touches {
             
             let location = touch.locationInNode(self)
             if btnclose.containsPoint(location){
                 addChild(btnclose2)
             
-            }else if off.containsPoint(location){
+            }else if on.containsPoint(location){
                 if soundStatus  == 1{
                     off.removeFromParent()
                     novolume.removeFromParent()
@@ -116,7 +115,7 @@ class Setting: SKScene {
                     addChild(backgroundMusic)
                     
                     soundStatus = 0
-                    Sound()
+                    saveSound()
                     print("soundSet\(soundStatus)")
                 }else{
                     on.removeFromParent()
@@ -126,7 +125,7 @@ class Setting: SKScene {
                     backgroundMusic.removeFromParent()
                     
                     soundStatus = 1
-                    Sound()
+                    saveSound()
                     print("soundSet\(soundStatus)")
                 }
 
@@ -160,7 +159,7 @@ class Setting: SKScene {
         
     }
 
-    func Sound(){  //การ save ค่า (การจดจำค่า)
+    func saveSound(){  //การ save ค่า (การจดจำค่า)
         soundDefault.setValue(soundStatus, forKey: "soundStatus")
         soundDefault.synchronize()
         print("sound\(soundStatus)")

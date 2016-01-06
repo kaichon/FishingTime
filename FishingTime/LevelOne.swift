@@ -13,7 +13,7 @@ import GameplayKit
 @available(iOS 9.0, *)
 class LevelOne: SKScene , SKPhysicsContactDelegate{
     
-    var status = Setting()
+    var statusSound = Setting()
 
     
     private var fish1 = Fish1()
@@ -53,17 +53,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     
     var timeLevel = NSUserDefaults.standardUserDefaults()
     var scoreTime = 120
-    /*
-    override init() {
-        //rope2 = Rope(
-        super.init()
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }*/
     
-
     override func didMoveToView(view: SKView)  {
         
         physicsWorld.gravity = CGVectorMake(0, 0)
@@ -147,19 +137,21 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         pp.size.height = size.height / 15
         addChild(pp)
 
+        //-------------------------------------------------
         
         let soundDefault = NSUserDefaults.standardUserDefaults()
         if (soundDefault.valueForKey("soundStatus") != nil){
-            status.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
-            print("soundMain\(status.soundStatus)")
+            statusSound.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
+            print("soundMain\(statusSound.soundStatus)")
         }
         
-        if status.soundStatus == 0 {
+        if statusSound.soundStatus == 0 {
             let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
         }
-
+        
+        //Read  scoreLevel1
         if (timeLevel.valueForKey("scoreTime") != nil){
             scoreTime = timeLevel.valueForKey("scoreTime") as! Int!
             print("ScoreTime ",     "\(scoreTime)")
@@ -208,18 +200,6 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     }
     
 
-//    func hookMoveDown(){
-//        
-//        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.02, duration: 5.0))
-//        rope.runAction(SKAction.moveToY(self.frame.size.height * 0.54, duration: 5.0))
-//        
-//    }
-//    func hookMoveUp(){
-//        
-//        hook.runAction(SKAction.moveToY(self.frame.size.height * 0.9, duration: 4.0))
-//        rope.runAction(SKAction.moveToY(self.frame.size.height * 1.42, duration: 4.0))
-//    }
-//
     func hookMoveUp(){
         
         hook.runAction(SKAction.moveToY(self.frame.size.height * 0.9, duration: 3.0))
@@ -255,7 +235,7 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
             fish1.removeAllChildren()
             hookMoveUp()
             
-            if status.soundStatus == 0 {
+            if statusSound.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
             
@@ -265,12 +245,12 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
                 if(numPoints == 3 ){
                     points.fontColor = UIColor.redColor()
                     addChild(agree)
-                    var ss = 0
-                    ss = 120 - seconds
-                    ss -= enemy
-                    print("time ",ss)
-                    scoreTime = ss
-                    scoreTime1()
+                    var sum = 0
+                    sum = 120 - seconds
+                    sum -= enemy
+                    print("time ",sum)
+                    scoreTime = sum
+                    saveScoreTime()
                         let Scene = ScoreLevel1(size: self.size)
                         let transition = SKTransition.fadeWithDuration(2)
                         self.scene!.view?.presentScene(Scene, transition: transition)
@@ -369,7 +349,8 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         
     }
     
-    func scoreTime1(){  //การ save ค่า (การจดจำค่า)
+    
+    func saveScoreTime(){  //การ save ค่า (การจดจำค่า)
         timeLevel.setValue(scoreTime, forKey: "scoreTime")
         timeLevel.synchronize()
         print("ScoreLevel \(scoreTime)")

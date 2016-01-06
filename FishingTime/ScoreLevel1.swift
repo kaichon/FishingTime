@@ -15,7 +15,7 @@ import AVFoundation
 @available(iOS 9.0, *)
 class ScoreLevel1: SKScene , SKPhysicsContactDelegate{
     
-    let score = LevelOne()
+    let scoreLevelOne = LevelOne()
     
     let bgscore = SKSpriteNode(imageNamed: "bgscore")
     let ok = SKSpriteNode(imageNamed: "ok")
@@ -61,12 +61,12 @@ class ScoreLevel1: SKScene , SKPhysicsContactDelegate{
         
         let timeDefault = NSUserDefaults.standardUserDefaults()
         if (timeDefault.valueForKey("scoreTime") != nil){
-            score.scoreTime = timeDefault.valueForKey("scoreTime") as! Int!
-            print("scoreTime\(score.scoreTime)")
+            scoreLevelOne.scoreTime = timeDefault.valueForKey("scoreTime") as! Int!
+            print("scoreTime\(scoreLevelOne.scoreTime)")
             
         }
         
-        time = score.scoreTime
+        time = scoreLevelOne.scoreTime
         textTime.text = "\(time)"
         addChild(textTime)
 
