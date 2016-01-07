@@ -12,7 +12,7 @@ import GameplayKit
 @available(iOS 9.0, *)
 class LevelTwo: SKScene , SKPhysicsContactDelegate{
     
-    var status = Setting()
+    var statusSound = Setting()
     
     private var fish1 = Fish1()
     private var fish2 = Fish2()
@@ -55,11 +55,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     
     var timeLevel2 = NSUserDefaults.standardUserDefaults()
     var scoreTime2 = 120
-    
-
-//    var reduce = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
-//    var reduce1 = SKLabelNode(text: " ลดเวลา 10 วินาที !! ")
-    
+        
     
     override func didMoveToView(view: SKView)  {
         
@@ -169,11 +165,11 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
         let soundDefault = NSUserDefaults.standardUserDefaults()
         if (soundDefault.valueForKey("soundStatus") != nil){
-            status.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
-            print("soundMain\(status.soundStatus)")
+            statusSound.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
+            print("soundMain\(statusSound.soundStatus)")
         }
         
-        if status.soundStatus == 0 {
+        if statusSound.soundStatus == 0 {
             let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
@@ -275,7 +271,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             fish1.removeAllChildren()
             hookMoveUp()
     
-            if status.soundStatus == 0 {
+            if statusSound.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
             
@@ -296,7 +292,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
             hitFish_2()
             fish2.removeAllChildren()
             hookMoveUp()
-            if status.soundStatus == 0 {
+            if statusSound.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
             
@@ -338,12 +334,12 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
     
     override func update(currentTime: NSTimeInterval) {
         if((numPoints1 == 3) && (numPoints2 == 2)){
-            var ss = 0
-            ss = 120 - seconds
-            ss -= enemy
-            print("time  ",ss)
-            scoreTime2 = ss
-            scoreTime1()
+            var sum = 0
+            sum = 120 - seconds
+            sum -= enemy
+            print("time  ",sum)
+            scoreTime2 = sum
+            saveScoreTime2()
 
             let Scene = ScoreLevel2(size: self.size)
             let transition = SKTransition.fadeWithDuration(2)
@@ -423,7 +419,7 @@ class LevelTwo: SKScene , SKPhysicsContactDelegate{
         
     }
     
-    func scoreTime1(){  //การ save ค่า (การจดจำค่า)
+    func saveScoreTime2(){  //การ save ค่า (การจดจำค่า)
         timeLevel2.setValue(scoreTime2, forKey: "scoreTime2")
         timeLevel2.synchronize()
         print("ScoreLevel \(scoreTime2)")

@@ -16,7 +16,7 @@ class Shoes : SKNode {
     
     override init() {
         super.init()
-        name = "Shoes\(self)"
+        
         
 
         //addshoe
@@ -68,7 +68,7 @@ class Shoes : SKNode {
         
         
         //position
-        shoe.position = CGPoint(x: 80, y: shoe.size.height * random(min: 2.0, max: 2.3))
+        shoe.position = CGPoint(x: 80, y: shoe.size.height * random(min: 1.0, max: 2.0))
         addChild(shoe)
         
         let moveshoe = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 6, max: 8))))
@@ -76,13 +76,13 @@ class Shoes : SKNode {
         
         shoe.runAction(SKAction.sequence([moveshoe, removeshoe]))
         
-//        
+        
         shoe.physicsBody = SKPhysicsBody(rectangleOfSize: shoe.self.size)
         shoe.physicsBody?.dynamic = true
         shoe.physicsBody?.affectedByGravity = false
         shoe.physicsBody?.allowsRotation = false
         shoe.physicsBody?.categoryBitMask = ShoesCategory
-        shoe.physicsBody?.contactTestBitMask = ShoesCategory 
+        shoe.physicsBody?.contactTestBitMask = HookCategory 
         shoe.physicsBody?.collisionBitMask = 0
     }
 

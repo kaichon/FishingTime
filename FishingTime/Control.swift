@@ -14,7 +14,7 @@ class Control: SKNode{
     
     override init() {
         super.init()
-        name = "Control\(self)"
+       
         
         addhook()
         

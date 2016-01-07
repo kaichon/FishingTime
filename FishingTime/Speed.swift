@@ -12,7 +12,7 @@ import AudioToolbox
 @available(iOS 9.0, *)
 class Speed: SKScene , SKPhysicsContactDelegate{
     
-    var status = Setting()
+    var statusSound = Setting()
     
     private var fish1 = Fish1()
     private var fish2 = Fish2()
@@ -52,7 +52,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     var reduce1 = SKLabelNode(text: " - 10s ! ")
     
     var scoreDefault = NSUserDefaults.standardUserDefaults()
-    var sscore = 0
+    var speedScore = 0
     
     override func didMoveToView(view: SKView)  {
         
@@ -139,20 +139,21 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         
         let soundDefault = NSUserDefaults.standardUserDefaults()
         if (soundDefault.valueForKey("soundStatus") != nil){
-            status.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
-            print("soundMain\(status.soundStatus)")
+            statusSound.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
+            print("soundMain\(statusSound.soundStatus)")
         }
         
-        if status.soundStatus == 0 {
+        if statusSound.soundStatus == 0 {
             let backgroundMusic = SKAudioNode(fileNamed: "background.mp3")
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
             
         }
         
-        if (scoreDefault.valueForKey("sscore") != nil){
-            sscore = scoreDefault.valueForKey("sscore") as! Int!
-            print("scoreMain\(sscore)")
+        
+        if (scoreDefault.valueForKey("speedScore") != nil){
+            speedScore = scoreDefault.valueForKey("speedScore") as! Int!
+            print("scoreMain\(speedScore)")
         }
 
     }
@@ -172,7 +173,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
         if(seconds <= 0)  {
             timer.invalidate()
             
-            sscore = numPoints
+            speedScore = numPoints
             scoreNum()
             let ScoreSpeedScene = ScoreSpeed(size: self.size)
             let transition = SKTransition.fadeWithDuration(0)
@@ -233,7 +234,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             hitFish_1()
             hookMoveUp()
             
-            if status.soundStatus == 0 {
+            if statusSound.soundStatus == 0 {
             runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
             
@@ -249,7 +250,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             hookMoveUp()
            
             
-            if status.soundStatus == 0 {
+            if statusSound.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
         }
@@ -284,7 +285,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             hookMoveUp()
             
             
-            if status.soundStatus == 0 {
+            if statusSound.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
         }
@@ -299,7 +300,7 @@ class Speed: SKScene , SKPhysicsContactDelegate{
             hookMoveUp()
             
 
-            if status.soundStatus == 0 {
+            if statusSound.soundStatus == 0 {
                 runAction(SKAction.playSoundFileNamed("click.WAV", waitForCompletion: false))
             }
         }
@@ -407,9 +408,9 @@ class Speed: SKScene , SKPhysicsContactDelegate{
     }
     
     func scoreNum(){  //การ save ค่า (การจดจำค่า)
-        scoreDefault.setValue(sscore, forKey: "sscore")
+        scoreDefault.setValue(speedScore, forKey: "speedScore")
         scoreDefault.synchronize()
-        print("Scorespeed \(sscore)")
+        print("Scorespeed \(speedScore)")
     }
 
     

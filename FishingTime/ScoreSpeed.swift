@@ -15,7 +15,7 @@ import AVFoundation
 @available(iOS 9.0, *)
 class ScoreSpeed: SKScene , SKPhysicsContactDelegate{
     
-    let score = Speed()
+    let scoreSpeed = Speed()
 
     let bgscore = SKSpriteNode(imageNamed: "bgscore")
     let ok = SKSpriteNode(imageNamed: "ok")
@@ -62,13 +62,13 @@ class ScoreSpeed: SKScene , SKPhysicsContactDelegate{
         
         
         let scoreDefault = NSUserDefaults.standardUserDefaults()
-        if (scoreDefault.valueForKey("sscore") != nil){
-            score.sscore = scoreDefault.valueForKey("sscore") as! Int!
-            print("scoreMain\(score.sscore)")
+        if (scoreDefault.valueForKey("speedScore") != nil){
+            scoreSpeed.speedScore = scoreDefault.valueForKey("speedScore") as! Int!
+            print("scoreMain\(scoreSpeed.speedScore)")
             
         }
         
-        score1 = score.sscore
+        score1 = scoreSpeed.speedScore
         textscore1.text = "\(score1)"
         addChild(textscore1)
     

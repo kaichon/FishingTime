@@ -19,7 +19,7 @@ import AVFoundation
 @available(iOS 9.0, *)
 class HighScore: SKScene , SKPhysicsContactDelegate{
     
-    var status = Setting()
+    var statusSound = Setting()
      let score = Speed()
     let timeOne = LevelOne()
     let timeTwo = LevelTwo()
@@ -28,21 +28,20 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
     let btnclose2 = SKSpriteNode(imageNamed: "Close2")
     let bghighScore = SKSpriteNode(imageNamed: "bgHighScore")
     
-    var textscoreLeveltwo = SKLabelNode(text: "0")
-    let highScoreLevelTwoDefault = NSUserDefaults.standardUserDefaults()
-    var scoreLevel2 = 0
-    var highscoreLevel2 = 120
-    
     var textscoreLevelone = SKLabelNode(text: "0")
     let highScoreLevelOneDefault = NSUserDefaults.standardUserDefaults()
-    var scoreLevel1 = 0
     var highscoreLevel1 = 120
+    var scoreLevel1 = 0
+    
+    var textscoreLeveltwo = SKLabelNode(text: "0")
+    let highScoreLevelTwoDefault = NSUserDefaults.standardUserDefaults()
+    var highscoreLevel2 = 120
+    var scoreLevel2 = 0
     
     var textscoreSpeed = SKLabelNode(text: "0")
     let highScoreSpeedDefault = NSUserDefaults.standardUserDefaults()
-    var scorespeed = 0
     var highscorespeed = 0
-    
+    var scorespeed = 0
     
     override func didMoveToView(view: SKView) {
         
@@ -89,32 +88,31 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
         
         let soundDefault = NSUserDefaults.standardUserDefaults()
         if (soundDefault.valueForKey("soundStatus") != nil){
-            status.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
-            print("soundMain\(status.soundStatus)")
+            statusSound.soundStatus = soundDefault.valueForKey("soundStatus") as! Int!
+            print("soundMain\(statusSound.soundStatus)")
         }
         
-        if status.soundStatus == 0 {
+        if statusSound.soundStatus == 0 {
             let backgroundMusic = SKAudioNode(fileNamed: "soundHome.mp3")
             backgroundMusic.autoplayLooped = true
             addChild(backgroundMusic)
             
         }
-        //อ่านค่า จากหน้า LevelOne
+        //Read LevelOne
         let scoreOneDefault = NSUserDefaults.standardUserDefaults()
-        if (scoreOneDefault.valueForKey("scoreTime") != nil){
-            timeOne.scoreTime = scoreOneDefault.valueForKey("scoreTime") as! Int!
-            print("scoreOne\(timeOne.scoreTime)")
+        if (scoreOneDefault.valueForKey("scoreTime1") != nil){
+            timeOne.scoreTime1 = scoreOneDefault.valueForKey("scoreTime1") as! Int!
+            print("scoreOne\(timeOne.scoreTime1)")
         }
         
-        //------------------------------------------------------
-        //อ่านค่าสูงสุดของ Level1
+        //Read highScore Level1
         if (highScoreLevelOneDefault.valueForKey("highscoreLevel1") != nil){
             highscoreLevel1 = highScoreLevelOneDefault.valueForKey("highscoreLevel1") as! Int!
             print("HighScoreLevel1\(highscoreLevel1)")
             
         }
         
-        scoreLevel1 = timeOne.scoreTime
+        scoreLevel1 = timeOne.scoreTime1
         
         
         if(scoreLevel1 <= highscoreLevel1){
@@ -131,15 +129,15 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
         //------------------------------------------------------
 
         
-        //อ่านค่า จากหน้า LevelTwo
+        //Read LevelTwo
         let scoreTwoDefault = NSUserDefaults.standardUserDefaults()
         if (scoreTwoDefault.valueForKey("scoreTime2") != nil){
             timeTwo.scoreTime2 = scoreTwoDefault.valueForKey("scoreTime2") as! Int!
             print("scoreTwo\(timeTwo.scoreTime2)")
         }
         
-        //------------------------------------------------------
-        //อ่านค่าสูงสุดของ Level2
+        
+        //Read highScore Level2
         if (highScoreLevelTwoDefault.valueForKey("highscoreLevel2") != nil){
             highscoreLevel2 = highScoreLevelTwoDefault.valueForKey("highscoreLevel2") as! Int!
             print("HighScoreLevel2\(highscoreLevel2)")
@@ -163,24 +161,22 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
         //------------------------------------------------------
 
     
-        
-        //อ่านค่า จากหน้า speed
+        //Read speed
         let scoreDefault = NSUserDefaults.standardUserDefaults()
-        if (scoreDefault.valueForKey("sscore") != nil){
-            score.sscore = scoreDefault.valueForKey("sscore") as! Int!
-            print("scoreMain\(score.sscore)")
+        if (scoreDefault.valueForKey("speedScore") != nil){
+            score.speedScore = scoreDefault.valueForKey("speedScore") as! Int!
+            print("scoreMain\(score.speedScore)")
             
         }
         
-        //------------------------------------------------------
-        //อ่านค่าสูงสุดของ speed
+        //Read highScore speed
         if (highScoreSpeedDefault.valueForKey("highscorespeed") != nil){
             highscorespeed = highScoreSpeedDefault.valueForKey("highscorespeed") as! Int!
             print("HighScoreSpeed\(highscorespeed)")
             
         }
 
-        scorespeed = score.sscore
+        scorespeed = score.speedScore
         
         
         if(scorespeed >=  highscorespeed){
@@ -234,20 +230,20 @@ class HighScore: SKScene , SKPhysicsContactDelegate{
         }
         
     }
-    func levelOne(){  //การ save ค่า สูงสุดของ speed (การจดจำค่า)
+    func levelOne(){  // save
         highScoreLevelOneDefault.setValue(highscoreLevel1, forKey: "highscoreLevel1")
         highScoreLevelOneDefault.synchronize()
         print("HighLevel1save \(highscoreLevel1)")
     }
 
-    func levelTwo(){  //การ save ค่า สูงสุดของ speed (การจดจำค่า)
+    func levelTwo(){
         highScoreLevelTwoDefault.setValue(highscoreLevel2, forKey: "highscoreLevel2")
         highScoreLevelTwoDefault.synchronize()
         print("HighLevel2save \(highscoreLevel2)")
     }
 
     
-    func scoreSpeed(){  //การ save ค่า สูงสุดของ speed (การจดจำค่า)
+    func scoreSpeed(){
         highScoreSpeedDefault.setValue(highscorespeed, forKey: "highscorespeed")
         highScoreSpeedDefault.synchronize()
         print("HighSpeedsave \(highscorespeed)")

@@ -16,7 +16,7 @@ class Cans : SKNode {
 
     override init() {
         super.init()
-        name = "Cans\(self)"
+       
         
               //addcanned
         runAction(SKAction.repeatActionForever(
@@ -62,7 +62,7 @@ class Cans : SKNode {
         
         
         //position
-        canned.position = CGPoint(x: 100, y: canned.size.height * random(min: 2, max: 2.3))
+        canned.position = CGPoint(x: 100, y: canned.size.height * random(min: 1.0, max: 2.0))
         addChild(canned)
         
         let movecanned = (SKAction.moveByX(-800, y: 0.0,duration: NSTimeInterval(random(min: 7, max: 9))))
@@ -75,8 +75,9 @@ class Cans : SKNode {
         canned.physicsBody?.affectedByGravity = false
         canned.physicsBody?.allowsRotation = false
         canned.physicsBody?.categoryBitMask = CansCategory
-        canned.physicsBody?.contactTestBitMask = CansCategory 
+        canned.physicsBody?.contactTestBitMask = HookCategory
         canned.physicsBody?.collisionBitMask = 0
+        
     }
 
     

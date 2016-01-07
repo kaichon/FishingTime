@@ -60,13 +60,13 @@ class ScoreLevel1: SKScene , SKPhysicsContactDelegate{
         textTime.fontName = "Courier"
         
         let timeDefault = NSUserDefaults.standardUserDefaults()
-        if (timeDefault.valueForKey("scoreTime") != nil){
-            scoreLevelOne.scoreTime = timeDefault.valueForKey("scoreTime") as! Int!
-            print("scoreTime\(scoreLevelOne.scoreTime)")
+        if (timeDefault.valueForKey("scoreTime1") != nil){
+            scoreLevelOne.scoreTime1 = timeDefault.valueForKey("scoreTime1") as! Int!
+            print("scoreTime\(scoreLevelOne.scoreTime1)")
             
         }
         
-        time = scoreLevelOne.scoreTime
+        time = scoreLevelOne.scoreTime1
         textTime.text = "\(time)"
         addChild(textTime)
 
@@ -101,12 +101,11 @@ class ScoreLevel1: SKScene , SKPhysicsContactDelegate{
         for touch: AnyObject in touches {
             
             let location = touch.locationInNode(self)
+            
             if ok2.containsPoint(location){
-                
                 let Scene = LevelTwo(size: self.size)
                 let transition = SKTransition.fadeWithDuration(0)
                 self.scene!.view?.presentScene(Scene, transition: transition)
-                
                 
             }
             

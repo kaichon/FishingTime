@@ -20,7 +20,7 @@ class Fish1Left : SKNode {
     
     override init() {
         super.init()
-       // name = "Fish1\(self)"
+      
         
         
         //addFish

@@ -51,8 +51,8 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     var reduce = SKLabelNode(text: " - 10s ! ")
     var reduce1 = SKLabelNode(text: " - 10s ! ")
     
-    var timeLevel = NSUserDefaults.standardUserDefaults()
-    var scoreTime = 120
+    var timeLevel1 = NSUserDefaults.standardUserDefaults()
+    var scoreTime1 = 120
     
     override func didMoveToView(view: SKView)  {
         
@@ -152,9 +152,9 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
         }
         
         //Read  scoreLevel1
-        if (timeLevel.valueForKey("scoreTime") != nil){
-            scoreTime = timeLevel.valueForKey("scoreTime") as! Int!
-            print("ScoreTime ",     "\(scoreTime)")
+        if (timeLevel1.valueForKey("scoreTime1") != nil){
+            scoreTime1 = timeLevel1.valueForKey("scoreTime1") as! Int!
+            print("ScoreTime ",     "\(scoreTime1)")
         }
 
         
@@ -249,8 +249,8 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
                     sum = 120 - seconds
                     sum -= enemy
                     print("time ",sum)
-                    scoreTime = sum
-                    saveScoreTime()
+                    scoreTime1 = sum
+                    saveScoreTime1()
                         let Scene = ScoreLevel1(size: self.size)
                         let transition = SKTransition.fadeWithDuration(2)
                         self.scene!.view?.presentScene(Scene, transition: transition)
@@ -350,10 +350,10 @@ class LevelOne: SKScene , SKPhysicsContactDelegate{
     }
     
     
-    func saveScoreTime(){  //การ save ค่า (การจดจำค่า)
-        timeLevel.setValue(scoreTime, forKey: "scoreTime")
-        timeLevel.synchronize()
-        print("ScoreLevel \(scoreTime)")
+    func saveScoreTime1(){  //การ save ค่า (การจดจำค่า)
+        timeLevel1.setValue(scoreTime1, forKey: "scoreTime1")
+        timeLevel1.synchronize()
+        print("ScoreLevel \(scoreTime1)")
     }
 
 

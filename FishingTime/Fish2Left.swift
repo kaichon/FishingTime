@@ -20,10 +20,8 @@ class Fish2Left : SKNode {
     
     override init() {
         super.init()
-        name = "Fish2\(self)"
-        
-        
-        //addChon
+       
+  
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([
                 SKAction.runBlock(addChon),

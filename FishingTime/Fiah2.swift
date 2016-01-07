@@ -20,7 +20,7 @@ class Fish2 : SKNode {
     
     override init() {
         super.init()
-        name = "Fish2\(self)"
+        
         
         
         //addChon
@@ -70,12 +70,12 @@ class Fish2 : SKNode {
         chon.size.height = 35
         
         
-        chon.physicsBody = SKPhysicsBody(rectangleOfSize: chon.size) // 1
-        chon.physicsBody?.dynamic = true // 2
+        chon.physicsBody = SKPhysicsBody(rectangleOfSize: chon.size) 
+        chon.physicsBody?.dynamic = true
         chon.physicsBody?.affectedByGravity = false
         chon.physicsBody?.allowsRotation = false
-        chon.physicsBody?.categoryBitMask = Fish2Category // 3
-        chon.physicsBody?.contactTestBitMask = Fish2Category 
+        chon.physicsBody?.categoryBitMask = Fish2Category
+        chon.physicsBody?.contactTestBitMask = HookCategory 
         chon.physicsBody?.collisionBitMask = 0 
         
          let actualY = chon.size.height * random(min:  -0.2 , max: 2.2)
